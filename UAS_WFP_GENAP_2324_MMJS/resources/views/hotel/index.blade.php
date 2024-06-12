@@ -40,7 +40,7 @@
                     <p class="card-text m-3"><b>Address: </b>{{$d->address}}</p>
                     <p class="card-text m-3"><b>Phone: </b>{{$d->phone}}</p>
                     <p class="card-text m-3"><b>Email: </b>{{$d->email}}</p>
-                    <p class="card-text m-3"><b>Rating: </b>{{$d->web}}</p>
+                    <p class="card-text m-3"><b>Rating: </b>{{$d->rating}}</p>
                     <p class="card-text m-3"><b>Type of Hotel: </b>{{$d->name}}</p>
 
                     <p class="card-text">Product:
