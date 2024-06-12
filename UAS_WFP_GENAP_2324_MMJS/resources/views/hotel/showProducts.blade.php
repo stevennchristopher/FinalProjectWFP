@@ -6,7 +6,7 @@
     <div class='row'>
         @foreach($data as $d)
             <div class='col-md-4' style='border:1px solid #eee;text-align:center'>
-            <img src="{{ asset('images/product/'.$d->image) }}.jpg" height='200px' /></a> <br>
+            <img src="{{ asset('images/prod/'.$d->id.'/'.$d->image) }}.jpg" height='200px' /></a> <br>
             {{ $d->name }} <br>
             Rp. {{ $d->price }}
             </div>
