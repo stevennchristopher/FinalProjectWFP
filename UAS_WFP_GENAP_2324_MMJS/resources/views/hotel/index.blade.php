@@ -26,46 +26,42 @@
     <div class="page-toolbar"></div>
 </div>
 
-<div class="container text-center">
+<div class="container">
     <div class="row">
         @foreach ($data as $d)
           <div class="col" style="margin-bottom: 50px">
-            <div class="card mx-auto" style="width: 18rem">
+            <div class="card mx-auto" style="width: 30rem">
             <img style="height: 190px" src="{{ asset('images/hotel/'.$d->image) }}" class="card-img-top">
-            <a href="{{ url('hotel/uploadPhoto/'.$d->id) }}">
-            <button class='btn btn-xs btn-default'>upload photo</button></a>
-
                 <div class="card-body">
-                    <h5 class="card-title">{{$d->name}}</h5>
-
-                    <img height='100px' src="{{ asset('/logo/'.$d->id.'.jpg')}}"/>
-                    <a href="{{ url('hotel/uploadLogo/'.$d->id) }}">
-                    <button class='btn btn-xs btn-default'>upload logo</button></a>
+                    <b class="card-title">{{$d->name}}</b>
                     <br><br>
-
-                    <p class="card-text">Address: {{$d->address}}</p>
-                    <p class="card-text">Postcode: {{$d->postcode}}</p>
-                    <p class="card-text">City: {{$d->city}}</p>
-                    <p class="card-text">State: {{$d->state}}</p>
-                    <p class="card-text">Country: {{$d->country}}</p>
-                    <p class="card-text">Phone: {{$d->phone}}</p>
-                    <p class="card-text">Fax: {{$d->fax}}</p>
-                    <p class="card-text">Email: {{$d->email}}</p>
-                    <p class="card-text">Type: {{$d->accommodation_type}}</p>
-                    <p class="card-text">Web: {{$d->web}}</p>
-                    <p class="card-text">Type of Hotel: {{$d->name}}</p>
+                    <img height='100px' src="{{ asset('/logo/'.$d->id.'.jpg')}}"/>
+                    <br><br>
+                    <p class="card-text m-3"><b>Address: </b>{{$d->address}}</p>
+                    <p class="card-text m-3"><b>Phone: </b>{{$d->phone}}</p>
+                    <p class="card-text m-3"><b>Email: </b>{{$d->email}}</p>
+                    <p class="card-text m-3"><b>Rating: </b>{{$d->web}}</p>
+                    <p class="card-text m-3"><b>Type of Hotel: </b>{{$d->name}}</p>
 
                     <p class="card-text">Product:
-                        @foreach ($d->products as $item)
+                        {{-- @foreach ($d->products as $item)
                             {{$item->type}},
-                        @endforeach
-                        <br>
+                        @endforeach --}}
+                        {{-- <br> --}}
                         <a class='btn btn-xs btn-info' data-toggle='modal' data-target='#myModal'onclick='showProducts({{ $d->id }})'>Detail</a>
                     </p>
 
-                    <a class="btn btn-info"  href="#detail_{{$d->id}}" data-toggle="modal">{{ $d->name }}</a>
+                    <a href="{{ url('hotel/uploadLogo/'.$d->id) }}">
+                        <button class='btn btn-info'>Upload Logo Hotel</button>
+                    </a>
+                    <br><br>
+                    <a href="{{ url('hotel/uploadPhoto/'.$d->id) }}">
+                        <button class='btn btn-info'>Upload Foto Hotel</button>
+                    </a>
+                    <br><br>
+                    {{-- <a class="btn btn-info"  href="#detail_{{$d->id}}" data-toggle="modal">{{ $d->name }}</a> --}}
 
-                    <div class="modal fade" id="detail_{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
+                    {{-- <div class="modal fade" id="detail_{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -79,7 +75,7 @@
                                 </div>
 		                    </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
           </div>
