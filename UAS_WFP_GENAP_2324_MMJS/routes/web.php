@@ -19,7 +19,7 @@ use App\Http\Controllers\CustomerController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::resource('product', ProductController::class)->middleware('auth');
