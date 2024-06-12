@@ -33,32 +33,32 @@
             <div class="card mx-auto" style="width: 30rem">
             <img style="height: 190px" src="{{ asset('images/hotel/'.$d->image) }}" class="card-img-top">
                 <div class="card-body">
-                    <b class="card-title">{{$d->name}}</b>
-                    <br><br>
-                    <img height='100px' src="{{ asset('/logo/'.$d->id.'.jpg')}}"/>
-                    <br><br>
+                    <center><b class="card-title">{{$d->name}}</b></center>
+                    <br>
+                    <center><img height='100px' src="{{ asset('/logo/'.$d->id.'.jpg')}}"/></center>
+                    <br>
                     <p class="card-text m-3"><b>Address: </b>{{$d->address}}</p>
                     <p class="card-text m-3"><b>Phone: </b>{{$d->phone}}</p>
                     <p class="card-text m-3"><b>Email: </b>{{$d->email}}</p>
                     <p class="card-text m-3"><b>Rating: </b>{{$d->web}}</p>
                     <p class="card-text m-3"><b>Type of Hotel: </b>{{$d->name}}</p>
 
-                    <p class="card-text">Product:
+                    <p class="card-text m-3"><b>Product:</b>
                         {{-- @foreach ($d->products as $item)
                             {{$item->type}},
                         @endforeach --}}
                         {{-- <br> --}}
-                        <a class='btn btn-xs btn-info' data-toggle='modal' data-target='#myModal'onclick='showProducts({{ $d->id }})'>Detail</a>
+                        <a class='btn btn-xs btn-warning' data-toggle='modal' data-target='#myModal'onclick='showProducts({{ $d->id }})'>Detail</a>
                     </p>
+                        <a class="m-3" href="{{ url('hotel/uploadLogo/'.$d->id) }}">
+                            <button class='btn btn-info'>Upload Logo Hotel</button>
+                        </a>
+                    <br><br>
+                        <a class="m-3" href="{{ url('hotel/uploadPhoto/'.$d->id) }}">
+                            <button class='btn btn-info'>Upload Foto Hotel</button>
+                        </a>
+                    <br><br>
 
-                    <a href="{{ url('hotel/uploadLogo/'.$d->id) }}">
-                        <button class='btn btn-info'>Upload Logo Hotel</button>
-                    </a>
-                    <br><br>
-                    <a href="{{ url('hotel/uploadPhoto/'.$d->id) }}">
-                        <button class='btn btn-info'>Upload Foto Hotel</button>
-                    </a>
-                    <br><br>
                     {{-- <a class="btn btn-info"  href="#detail_{{$d->id}}" data-toggle="modal">{{ $d->name }}</a> --}}
 
                     {{-- <div class="modal fade" id="detail_{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
