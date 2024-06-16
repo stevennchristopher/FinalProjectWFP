@@ -27,7 +27,6 @@
     <div class="page-toolbar"></div>
 </div>
 
-<br>
 <div class="content">
     @if(@session('status'))
         <div class="alert alert-success">{{ session('status') }}</div>
