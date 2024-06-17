@@ -47,7 +47,7 @@ class TypeController extends Controller
         $data->description = $descTipe;
         $data->save();
 
-        return redirect()->route('type.index')->with('status','Horray ! Your data is successfully recorded !');
+        return redirect()->route('type.index')->with('status','Horray! Your data is successfully deleted !');
     }
 
     /**
