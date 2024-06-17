@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\TypeProductsController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,8 @@ Route::get('/', function () {
 Route::resource('product', ProductController::class)->middleware('auth');
 Route::resource('hotel', HotelController::class)->middleware('auth');
 Route::resource('transaction', TransactionController::class);
-Route::resource('type', TypeController::class)->middleware('auth')->middleware('auth');
+Route::resource('type', TypeController::class)->middleware('auth');
+Route::resource('typeproduct', TypeProductsController::class)->middleware('auth');
 Route::resource('customer', CustomerController::class)->middleware('auth');
 
 Route::get('report/availableHotelRooms', [HotelController::class, 'availableHotelRooms'])

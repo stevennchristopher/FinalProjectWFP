@@ -16,7 +16,7 @@ class TypeProductsController extends Controller
     {
         $data = TypeProduct::all();
 
-        return view('typeproducts.index', compact('data'));
+        return view('tipeproduk.index', compact('data'));
     }
 
     /**
@@ -24,7 +24,7 @@ class TypeProductsController extends Controller
      */
     public function create()
     {
-        return view('typeproducts.create');
+        return view('tipeproduk.create');
     }
 
     public function store(Request $request)
@@ -56,11 +56,11 @@ class TypeProductsController extends Controller
             $deletedData = $typeproducts;
             $deletedData->delete();
 
-            return redirect()->route('typeproducts.index')->with('status','Your data is sucessfully deleted !');
+            return redirect()->route('tipeproduk.index')->with('status','Your data is sucessfully deleted !');
         }
         catch(\PDOException $ex) {
             $msg = "Failed to delete data ! Make sure there is no related data before deleting it";
-            return redirect()->route('typeproducts.index')->with('error', $msg);
+            return redirect()->route('tipeproduk.index')->with('error', $msg);
         }
     }
 }
