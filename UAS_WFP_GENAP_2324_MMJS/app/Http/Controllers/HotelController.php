@@ -171,13 +171,12 @@ class HotelController extends Controller
 
     public function simpanPhoto(Request $request)
     {
-        $file=$request->file("file_photo");
-        $folder='images/hotel/';
-        $filename=time()."_".$file->getClientOriginalName();
+        $file = $request->file("file_photo");
+        $folder = 'images/hotel/';
+        $filename = $request->hotel_id . ".jpg"; 
         $file->move($folder, $filename);
-        $hotel=Hotel::find($request->hotel_id);
-        $hotel->image=$filename;
-        $hotel->save();
-        return redirect()->route('hotel.index')->with('status','photo terupload');
+
+
+        return redirect()->route('hotel.index')->with('status', 'Photo uploaded successfully!');
     }
 }

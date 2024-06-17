@@ -43,9 +43,10 @@
     <div class="container text-center">
         <br>
         <div class="row">
+            
             @foreach ($queryModel as $data)
               <div class="col" style="margin-bottom: 50px">
-                <div class="card mx-auto" style="width: 18rem">
+                <div class="card mx-auto" style="width: 30rem">
                 {{-- <img style="height: 190px" src="{{ asset('images/product/'.$data->image) }}.jpg" class="card-img-top"> --}}
 
                     @if($data->filenames)
