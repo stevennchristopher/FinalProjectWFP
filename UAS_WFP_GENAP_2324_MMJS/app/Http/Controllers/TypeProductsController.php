@@ -29,7 +29,13 @@ class TypeProductsController extends Controller
 
     public function store(Request $request)
     {
+        $namaTipe = $request->type_name;
 
+        $data = new TypeProduct();
+        $data->nama = $namaTipe;
+        $data->save();
+
+        return redirect()->route('tipeproduk.index')->with('status','Horray ! Your data is successfully recorded !');
     }
 
     public function show(string $id)
