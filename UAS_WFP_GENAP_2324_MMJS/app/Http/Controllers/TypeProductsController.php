@@ -43,23 +43,23 @@ class TypeProductsController extends Controller
 
     }
 
-    public function edit(TypeProduct $type)
+    public function edit(TypeProduct $typeproduct)
     {
 
     }
 
-    public function update(Request $request, TypeProduct $type)
+    public function update(Request $request, TypeProduct $typeproduct)
     {
 
     }
 
-    public function destroy(TypeProduct $typeproducts)
+    public function destroy(TypeProduct $typeproduct)
     {
         $user=Auth::user();
         $this->authorize('delete-permission',$user);
 
         try {
-            $deletedData = $typeproducts;
+            $deletedData = $typeproduct;
             $deletedData->delete();
 
             return redirect()->route('tipeproduk.index')->with('status','Your data is sucessfully deleted !');

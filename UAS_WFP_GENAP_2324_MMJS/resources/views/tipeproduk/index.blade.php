@@ -39,9 +39,9 @@ Product Type
         </thead>
         <tbody>
             @foreach($data as $d)
-            <tr id="tr_{{$d->id}}">
+            <tr>
                 <td>{{ $d->id }}</td>
-                <td id="td_name_{{$d->id}}">{{ $d->nama }}</td>
+                <td>{{ $d->nama }}</td>
                 <td>
                     <form method="POST" action="{{route('tipeproduk.destroy', $d->id)}}">
                         @csrf
