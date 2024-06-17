@@ -3,7 +3,7 @@
     @method("PUT")
     <div class="form-group">
         <label>Name of Product</label>
-        <input type="text" class="form-control" name="product_name" placeholder="Enter type" value="{{$data->type}}">
+        <input type="text" class="form-control" name="product_name" placeholder="Enter type" value="{{$data->name}}">
         <small class="form-text text-muted">Please write down the new type of product here.</small>
 
         <br><br>
@@ -14,14 +14,8 @@
 
         <br><br>
 
-        <label>Image of Product</label>
-        <input type="text" class="form-control" name="product_image" placeholder="Enter image" value="{{$data->image}}">
-        <small class="form-text text-muted">Please write down the new image of product here.</small>
-
-        <br><br>
-
         <label>Hotel of Product</label><br>
-        <select name="product_hotel">
+        <select name="product_hotel" class="form-control">
             @foreach ($dataHotel as $d)
                 @if ($data->hotel_id == $d->id)
                     <option value="{{$d->id}}" selected>{{$d->name}}</option>
@@ -37,6 +31,17 @@
         <label>Avaialble Room of Product</label>
         <input type="number" class="form-control" name="product_roomNum" placeholder="Enter Number of Room" value="{{$data->available_room}}">
         <small class="form-text text-muted">Please write down the new number room of product here.</small>
+        <br><br>
+        <label>Type of Product</label><br>
+        <select name="product_type" class="form-control">
+            @foreach ($types as $t)
+                @if ($t->tipeproduk_id == $t->id)
+                    <option value="{{$t->id}}" selected>{{$t->nama}}</option>
+                @else
+                    <option value="{{$t->id}}">{{$t->nama}}</option>
+                @endif
+            @endforeach
+        </select><br>
     </div>
     <button type="submit" class="btn btn-primary">Update</button>
 

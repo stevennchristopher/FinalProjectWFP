@@ -54,6 +54,20 @@
         <label>Avaialble Room of Product</label>
         <input type="number" class="form-control" name="product_roomNum" placeholder="Enter Number of Room" value="{{$data->available_room}}">
         <small class="form-text text-muted">Please write down the new number room of product here.</small>
+
+        <label>Type of Product</label><br>
+        <select name="product_type">
+            @foreach ($types as $t)
+                @if ($t->tipeproduk_id == $t->id)
+                    <option value="{{$t->id}}" selected>{{$t->nama}}</option>
+                @else
+                    <option value="{{$t->id}}">{{$t->nama}}</option>
+                @endif
+            @endforeach
+        </select><br>
+        <small class="form-text text-muted">Please choose the new hotel of product here.</small>
+
+        <br><br>
     </div>
     <button type="submit" class="btn btn-primary">Update</button>
 

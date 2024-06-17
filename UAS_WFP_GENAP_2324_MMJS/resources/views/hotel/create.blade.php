@@ -30,7 +30,7 @@ Add new hotel
         <input type="text" name="rating" class="form-control" id="rating"  placeholder="Enter your Hotel Rating Address">
     </div>
     <div class="form-group">
-    <label for="name">Name</label>
+    <label for="type">Type</label>
     <select name="type" class="form-control" id="type">
         @foreach ($types as $t)
         <option value="{{$t->id}}"> {{$t->name}}</option>

@@ -9,11 +9,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class TypeProduct extends Model
 {
     use HasFactory;
+    
+    protected $table = 'tipeproduks' ;
 
     public function products(): HasMany
     {
-        return $this->hasMany(Product::class, 'type_id','id');
+        return $this->hasMany(Product::class, 'tipeproduk_id', 'id');
     }
+
+    
 }
 
 

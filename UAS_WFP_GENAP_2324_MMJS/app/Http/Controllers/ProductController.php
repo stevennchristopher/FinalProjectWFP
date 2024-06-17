@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Hotel;
+use App\Models\TypeProduct;
 
 use Illuminate\Support\Facades\File;
 
@@ -26,6 +27,7 @@ class ProductController extends Controller
         //untuk query model
         // $queryModel = Product::all();
         $dataHotel = Hotel::all();
+        $types = TypeProduct::all();
 
         //dd($queryModel);
 
@@ -53,7 +55,7 @@ class ProductController extends Controller
                 $r['filenames']=$filenames;
             }
         }
-        return view('product.index', compact('queryModel', 'dataHotel'));
+        return view('product.index', compact('queryModel', 'dataHotel','types'));
     }
 
     /**
@@ -61,8 +63,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $types = TypeProduct::all();
         $dataHotel = Hotel::all();
-        return view('product.create', compact('dataHotel'));
+        return view('product.create', compact('dataHotel','types'));
     }
 
     /**
@@ -70,18 +73,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $typeProduct = $request->product_name;
+        $nameProduct = $request->product_name;
         $priceProduct = $request->product_price;
-        $imgProduct = $request->product_image;
         $hotelProduct = $request->product_hotel;
         $roomnumProduct = $request->product_roomNum;
+        $typeProduct = $request->product_type;
 
         $data = new Product();
-        $data->type = $typeProduct;
+        $data->name = $nameProduct;
         $data->price = $priceProduct;
-        $data->image = $imgProduct;
         $data->hotel_id = $hotelProduct;
         $data->available_room = $roomnumProduct;
+        $data->tipeproduk_id = $typeProduct;
         $data->save();
 
         return redirect()->route('product.index')->with('status','Horray ! Your data is successfully recorded !');
@@ -106,8 +109,8 @@ class ProductController extends Controller
     {
         $data = $product;
         $dataHotel = Hotel::all();
-
-        return view('product.edit', compact('data', 'dataHotel'));
+        $types = TypeProduct::all();
+        return view('product.edit', compact('data', 'dataHotel','types'));
     }
 
     /**
@@ -116,11 +119,11 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $updatedData = $product;
-        $updatedData->type = $request->product_name;
+        $updatedData->name = $request->product_name;
         $updatedData->price = $request->product_price;
-        $updatedData->image = $request->product_image;
         $updatedData->hotel_id = $request->product_hotel;
         $updatedData->available_room = $request->product_roomNum;
+        $updatedData->tipeproduk_id = $request->product_type;
         $updatedData->update();
         return redirect()->route('product.index')->with('status','Horray ! Your data is successfully updated !');
     }
@@ -147,9 +150,10 @@ class ProductController extends Controller
         $id = $request->id;
         $data = Product::find($id);
         $dataHotel = Hotel::all();
+        $types = TypeProduct::all();
         return response()->json(array(
         'status' => 'oke',
-        'msg' => view('product.getEditForm', compact('data','dataHotel'))->render()
+        'msg' => view('product.getEditForm', compact('data','dataHotel','types'))->render()
         ),200);
     }
 

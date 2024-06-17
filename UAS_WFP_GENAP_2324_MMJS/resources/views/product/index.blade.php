@@ -47,11 +47,11 @@
               <div class="col" style="margin-bottom: 50px">
                 <div class="card mx-auto" style="width: 30rem">
                 <div id="tr_{{$data->id}}" class="card-body">
-                        <center><h3 class="card-title">{{$data->name}}</h5></center><br>
-                        <p class="card-text m-3">Price: ${{$data->price}}</p>
-                        <p class="card-text m-3">Available: {{$data->available_room}} rooms</p>
-                        <p class="card-text m-3">Hotel Name: {{$data->hotels->name}}</p>
-                        <p class="card-text m-3">Type of Hotel: {{$data->name}}</p>
+                        <center><h3 class="card-title"><b>{{$data->name}}</b></h5></center><br>
+                        <p class="card-text m-3"><b>Price: </b>${{$data->price}}</p>
+                        <p class="card-text m-3"><b>Available: </b>{{$data->available_room}} rooms</p>
+                        <p class="card-text m-3"><b>Hotel Name: </b>{{$data->hotels->name}}</p>
+                        <p class="card-text m-3"><b>Type of Products: </b>{{$data->tipeproduks->nama}}</p> 
                         <!-- <p class="card-text"><a class="btn btn-warning" href="{{ route('product.edit', $data->id)}}">Edit</a></p> -->
                         <p class="card-text m-3"><a href="#modalEditA" class="btn btn-warning" data-toggle="modal" onclick="getEditForm({{$data->id}})">Edit</a></p>
 
@@ -109,8 +109,8 @@
             <form method="POST" action="{{ route('product.store') }}">
                 @csrf
                 <div class="form-group">
-                    <label>Type of Product</label>
-                    <input type="text" class="form-control" name="product_type" placeholder="Enter type">
+                    <label>Name of Product</label>
+                    <input type="text" class="form-control" name="product_name" placeholder="Enter type">
                     <small class="form-text text-muted">Please write down the type of product here.</small>
 
                     <br><br>
@@ -121,14 +121,8 @@
 
                     <br><br>
 
-                    <label>Image of Product</label>
-                    <input type="text" class="form-control" name="product_image" placeholder="Enter image">
-                    <small class="form-text text-muted">Please write down the image of product here.</small>
-
-                    <br><br>
-
                     <label>Hotel of Product</label><br>
-                    <select name="product_hotel">
+                    <select name="product_hotel"  class="form-control" >
                         @foreach ($dataHotel as $data)
                             <option value="{{$data->id}}">{{$data->name}}</option>
                         @endforeach
@@ -141,7 +135,15 @@
                     <input type="number" class="form-control" name="product_roomNum" placeholder="Enter Number of Room">
                     <small class="form-text text-muted">Please write down the number room of product here.</small>
                 </div>
-        </div>
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <select name="product_type" class="form-control" id="product_type">
+                        @foreach ($types as $t)
+                        <option value="{{$t->id}}"> {{$t->nama}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>

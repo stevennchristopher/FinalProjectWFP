@@ -30,7 +30,7 @@
         <br><br>
 
         <label>Hotel of Product</label><br>
-        <select name="product_hotel">
+        <select name="product_hotel"  class="form-control">
             @foreach ($dataHotel as $data)
                 <option value="{{$data->id}}">{{$data->name}}</option>
             @endforeach
@@ -42,6 +42,14 @@
         <label>Avaialble Room of Product</label>
         <input type="number" class="form-control" name="product_roomNum" placeholder="Enter Number of Room">
         <small class="form-text text-muted">Please write down the number room of product here.</small>
+    </div>
+    <div class="form-group">
+    <label for="type">Type</label>
+    <select name="product_type" class="form-control" id="product_type">
+        @foreach ($types as $t)
+        <option value="{{$t->id}}"> {{$t->nama}}</option>
+        @endforeach
+</select>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     {{-- <a href="{{ route('type.index') }}" class="btn btn-danger"><- Back</a> --}}

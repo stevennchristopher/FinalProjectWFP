@@ -11,7 +11,7 @@
 <body style="background-color:antiquewhite">
 
 @section('content')
-<center><h1 class="display-1">Hotel List</h1></center>
+<center><h1 class="display-1">Pilihan Hotel:</h1></center>
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
@@ -39,7 +39,7 @@
                     </a>
             @endif
                 <div class="card-body">
-                    <center><b class="card-title">{{$d->name}}</b></center>
+                    <center><h3><b class="card-title">{{$d->name}}</b></h3></center>
                     <br>
                     <center><img height='100px' src="{{ asset('/logo/'.$d->id.'.jpg')}}"/></center>
                     <br>

@@ -11,7 +11,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    public $timestamps = false;    
 
     public function hotels(): BelongsTo
     {
@@ -25,6 +25,6 @@ class Product extends Model
 
     public function tipeproduks(): BelongsTo
     {
-        return $this->belongsTo(TypeProduct::class, 'type_id');
+        return $this->belongsTo(TypeProduct::class, 'tipeproduk_id');
     }
 }
