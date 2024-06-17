@@ -49,9 +49,6 @@ Product Type
                         <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete {{$d->id}} - {{$d->nama}} ? ');">
                     </form>
                 </td>
-                {{-- <td>
-                    <a class="btn btn-warning" href="{{ route('type.edit', $d->id)}}">Edit</a>
-                </td> --}}
             </tr>
             @endforeach
     </table>

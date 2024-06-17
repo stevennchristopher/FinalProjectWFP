@@ -80,7 +80,7 @@ class MembershipController extends Controller
         }
         catch(\PDOException $ex) {
             $msg = "Failed to delete data ! Make sure there is no related data before deleting it";
-            return redirect()->route('product.index')->with('error', $msg);
+            return redirect()->route('membership.index')->with('error', $msg);
         }
     }
 }
