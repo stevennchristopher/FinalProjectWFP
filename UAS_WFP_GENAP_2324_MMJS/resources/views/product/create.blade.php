@@ -18,8 +18,8 @@
 <form method="POST" action="{{ route('product.store') }}">
     @csrf
     <div class="form-group">
-        <label>Type of Product</label>
-        <input type="text" class="form-control" name="product_type" placeholder="Enter type">
+        <label>Name of Product</label>
+        <input type="text" class="form-control" name="product_name" placeholder="Enter type">
         <small class="form-text text-muted">Please write down the type of product here.</small>
 
         <br><br>

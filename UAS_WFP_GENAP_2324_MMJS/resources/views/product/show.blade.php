@@ -20,7 +20,7 @@
             <div class="card mx-auto" style="width: 18rem">
             <img style="height: 190px" src="{{ asset('images/product/'.$data->image) }}.jpg" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">{{$data->type}}</h5>
+                    <h5 class="card-title">{{$data->name}}</h5>
                     <p class="card-text">Price: ${{$data->price}}</p>
                     <p class="card-text">Hotel ID: {{$data->hotel_id}}</p>
                     <p class="card-text">Hotel Name: {{$data->hotels->name}}</p>

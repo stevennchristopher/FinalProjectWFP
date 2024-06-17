@@ -70,7 +70,7 @@
 
 
                     <div id="tr_{{$data->id}}" class="card-body">
-                        <h5 class="card-title">{{$data->type}}</h5>
+                        <h5 class="card-title">{{$data->name}}</h5>
                         <p class="card-text">Price: ${{$data->price}}</p>
                         <p class="card-text">Available: {{$data->available_room}} rooms</p>
                         <p class="card-text">Hotel Name: {{$data->hotels->name}}</p>
