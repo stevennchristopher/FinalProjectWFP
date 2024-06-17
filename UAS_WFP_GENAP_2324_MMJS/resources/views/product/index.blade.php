@@ -40,50 +40,55 @@
 
     <a href="#modalCreate" data-toggle="modal" class="btn btn-info">+ New Product(with Modals)</a>
 
-    <div class="container text-center">
+    <div class="container">
         <br>
-        <div class="row">
+        <div class="row ">
             @foreach ($queryModel as $data)
               <div class="col" style="margin-bottom: 50px">
                 <div class="card mx-auto" style="width: 30rem">
+                <div id="tr_{{$data->id}}" class="card-body">
+                        <center><h3 class="card-title">{{$data->name}}</h5></center><br>
+                        <p class="card-text m-3">Price: ${{$data->price}}</p>
+                        <p class="card-text m-3">Available: {{$data->available_room}} rooms</p>
+                        <p class="card-text m-3">Hotel Name: {{$data->hotels->name}}</p>
+                        <p class="card-text m-3">Type of Hotel: {{$data->name}}</p>
+                        <!-- <p class="card-text"><a class="btn btn-warning" href="{{ route('product.edit', $data->id)}}">Edit</a></p> -->
+                        <p class="card-text m-3"><a href="#modalEditA" class="btn btn-warning" data-toggle="modal" onclick="getEditForm({{$data->id}})">Edit</a></p>
+
+                        <!-- <p class="card-text"><a href="#" value="DeleteNoReload" class="btn btn-danger" onclick="if(confirm('Are you sure to delete {{$data->id}} - {{$data->type}} ? ')) deleteDataRemoveTR({{$data->id}})">Delete without Reload</a></p> -->
+
+                        <form method="POST" action="{{route('product.destroy', $data->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Delete" class="btn btn-danger m-3" onclick="return confirm('Are you sure to delete {{$data->id}} - {{$data->type}} ? ');">
+                        </form>
+                        
+                    </div>
                 {{-- <img style="height: 190px" src="{{ asset('images/product/'.$data->image) }}.jpg" class="card-img-top"> --}}
 
                     @if($data->filenames)
                         @foreach ($data->filenames as $filename)
                             <img style="height: 190px" src="{{asset('images/prod/'.$data->id.'/'.$filename)}}" class="card-img-top"/>
-                            <form style="display: inline" method="POST"
+                            <form style="display: inline; text-align:right" method="POST"
                                 action="{{url('product/delPhoto')}}">
                                 @csrf
                                 <input type="hidden" value="{{'images/prod/'.$data->id.'/'.$filename}}" name='filepath' />
-                                <input type="submit" value="delete" class="btn btn-danger btn-xs"
+                                <input type="submit" value="Delete" class="btn btn-danger btn-xs"
                                 onclick="return confirm('Are you sure ? ');">
                             </form>
                             <br>
                         @endforeach
                     @endif
-
-                    <a href="{{ url('product/uploadPhoto/'.$data->id) }}">
-                    <button class='btn btn-xs btn-default'>upload photo</button></a>
+                    <a class="m-3" href="{{ url('product/uploadPhoto/'.$data->id)  }}">
+                            <button class='btn btn-info m-3'>Upload Foto</button>
+                        </a>
+                        
+               
                     <br>
 
 
 
-                    <div id="tr_{{$data->id}}" class="card-body">
-                        <h5 class="card-title">{{$data->name}}</h5>
-                        <p class="card-text">Price: ${{$data->price}}</p>
-                        <p class="card-text">Available: {{$data->available_room}} rooms</p>
-                        <p class="card-text">Hotel Name: {{$data->hotels->name}}</p>
-                        <p class="card-text"><a class="btn btn-warning" href="{{ route('product.edit', $data->id)}}">Edit</a></p>
-                        <p class="card-text"><a href="#modalEditA" class="btn btn-warning" data-toggle="modal" onclick="getEditForm({{$data->id}})">Edit Product A</a></p>
-
-                        <p class="card-text"><a href="#" value="DeleteNoReload" class="btn btn-danger" onclick="if(confirm('Are you sure to delete {{$data->id}} - {{$data->type}} ? ')) deleteDataRemoveTR({{$data->id}})">Delete without Reload</a></p>
-
-                        <form method="POST" action="{{route('product.destroy', $data->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete {{$data->id}} - {{$data->type}} ? ');">
-                        </form>
-                    </div>
+                    
                 </div>
               </div>
             @endforeach
