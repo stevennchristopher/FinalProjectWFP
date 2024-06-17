@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class TypeProduct extends Model
 {
     use HasFactory;
+    protected $table = 'tipeproduks';
 
     public function products(): HasMany
     {
