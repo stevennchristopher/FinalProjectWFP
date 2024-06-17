@@ -28,7 +28,7 @@ Route::resource('product', ProductController::class)->middleware('auth');
 Route::resource('hotel', HotelController::class)->middleware('auth');
 Route::resource('transaction', TransactionController::class);
 Route::resource('type', TypeController::class)->middleware('auth');
-Route::resource('typeproduct', TypeProductsController::class)->middleware('auth');
+Route::resource('tipeproduk', TypeProductsController::class)->middleware('auth');
 Route::resource('customer', CustomerController::class)->middleware('auth');
 
 Route::get('report/availableHotelRooms', [HotelController::class, 'availableHotelRooms'])
