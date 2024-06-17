@@ -43,7 +43,6 @@
     <div class="container text-center">
         <br>
         <div class="row">
-            
             @foreach ($queryModel as $data)
               <div class="col" style="margin-bottom: 50px">
                 <div class="card mx-auto" style="width: 30rem">

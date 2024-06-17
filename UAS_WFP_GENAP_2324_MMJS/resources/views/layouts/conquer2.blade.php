@@ -514,6 +514,7 @@
                     <span class="selected"></span>
                     </a>
                 </li>
+				
                 <li class="start active ">
                     <a href="{{ route('customer.index') }}">
                     <i class="icon-star"></i>
