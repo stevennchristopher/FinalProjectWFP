@@ -30,6 +30,7 @@
 @endif
 
 <a href="{{ route('hotel.create') }}" class="btn btn-success">+ New Hotel</a><br><br>
+<a href="{{ route('transaction.create') }}" class="btn btn-success">Want to Reserve?</a><br><br>
 <div class="container">
     <div class="row">
         @foreach ($data as $d)

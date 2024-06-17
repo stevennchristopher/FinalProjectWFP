@@ -2,8 +2,8 @@
 
 @section('content')
 <h3 class="page-title">
-Dashboard
-<small>statistics and more</small>
+Transaction
+<small>table</small>
 </h3>
 <div class="page-bar">
     <ul class="page-breadcrumb">

@@ -44,7 +44,7 @@
                 <label for="product_id">Product</label>
                 <select name="transaction_product[]" class="form-control">
                     @foreach ($dataProduct as $data)
-                        <option value="{{$data->id}}">{{$data->type}}</option>
+                        <option value="{{$data->id}}">{{$data->name}} from {{$data->hotels->name}} (Type: {{$data->tipeproduks->nama}})</option>
                     @endforeach
                 </select>
             </div>
@@ -52,10 +52,10 @@
                 <label for="quantity">Quantity</label>
                 <input type="number" name="transaction_product_quantity[]" class="form-control">
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="price">Price</label>
                 <input type="text" name="transaction_product_subtotal[]" class="form-control">
-            </div>
+            </div> --}}
         </div>
 
         {{-- <label>Product of Transaction</label><br>
@@ -90,10 +90,6 @@ document.getElementById('addProduct').addEventListener('click', function() {
         <div class="form-group">
             <label for="quantity">Quantity</label>
             <input type="number" name="transaction_product_quantity[]" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="price">Price</label>
-            <input type="text" name="transaction_product_subtotal[]" class="form-control">
         </div>
     `;
     document.getElementById('productContainer').appendChild(productSection);

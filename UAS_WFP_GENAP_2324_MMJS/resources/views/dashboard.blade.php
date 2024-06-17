@@ -17,5 +17,9 @@ Dashboard
 <div class="content">
     <h1>Welcome to Laralux!</h1>
     <h3>Made by MMJS</h3>
+    <h4>- 160421001 / Ignatius Steven Christopher B.</h4>
+    <h4>- 160821004 / Melissa Veronica</h4>
+    <h4>- 160821009 / Johannes Eugenio</h4>
+    <h4>- 160821016 / Michelle Raphaella</h4>
 </div>
 @endsection
