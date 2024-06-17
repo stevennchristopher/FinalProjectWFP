@@ -12,7 +12,7 @@ class TypeProduct extends Model
 
     public function products(): HasMany
     {
-        return $this->belongsTo(Product::class, 'type_id','id');
+        return $this->hasMany(Product::class, 'type_id','id');
     }
 }
 

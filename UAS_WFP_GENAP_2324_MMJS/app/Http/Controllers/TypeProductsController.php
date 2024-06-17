@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Type;
+use App\Models\TypeProduct;
 use Illuminate\Support\Facades\Auth;
 
 class TypeProductsController extends Controller
@@ -37,12 +37,12 @@ class TypeProductsController extends Controller
         
     }
 
-    public function edit(Type $type)
+    public function edit(TypeProduct $type)
     {
         
     }
 
-    public function update(Request $request, Type $type)
+    public function update(Request $request, TypeProduct $type)
     {
         
     }
