@@ -487,9 +487,23 @@
                     </a>
                 </li>
                 <li class="start active ">
+                    <a href="{{ route('type.index') }}">
+                    <i class="icon-star"></i>
+                    <span class="title">Hotel Type</span>
+                    <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="start active ">
                     <a href="{{ route('product.index') }}">
                     <i class="icon-star"></i>
                     <span class="title">Product</span>
+                    <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="start active ">
+                    <a href="{{ route('tipeproduk.index') }}">
+                    <i class="icon-star"></i>
+                    <span class="title">Product Type</span>
                     <span class="selected"></span>
                     </a>
                 </li>
@@ -501,24 +515,17 @@
                     </a>
                 </li>
                 <li class="start active ">
-                    <a href="{{ route('type.index') }}">
-                    <i class="icon-star"></i>
-                    <span class="title">Hotel Type</span>
-                    <span class="selected"></span>
-                    </a>
-                </li>
-				<li class="start active ">
-                    <a href="{{ route('tipeproduk.index') }}">
-                    <i class="icon-star"></i>
-                    <span class="title">Product Type</span>
-                    <span class="selected"></span>
-                    </a>
-                </li>
-				
-                <li class="start active ">
                     <a href="{{ route('customer.index') }}">
                     <i class="icon-star"></i>
                     <span class="title">Customer</span>
+                    <span class="selected"></span>
+                    </a>
+                </li>
+
+                <li class="start active ">
+                    <a href="{{ route('membership.index') }}">
+                    <i class="icon-star"></i>
+                    <span class="title">Membership</span>
                     <span class="selected"></span>
                     </a>
                 </li>

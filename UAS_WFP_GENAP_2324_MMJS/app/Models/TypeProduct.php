@@ -10,7 +10,7 @@ class TypeProduct extends Model
 {
     use HasFactory;
     
-    protected $table = 'tipeproduks' ;
+    protected $table = 'tipeproduks';
 
     public function products(): HasMany
     {

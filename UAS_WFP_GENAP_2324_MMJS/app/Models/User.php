@@ -49,9 +49,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class, 'user_id', 'id');
     }
-
-    public function memberships(): HasOne
-    {
-        return $this->hasOne(Membership::class, 'user_id', 'id');
-    }
 }

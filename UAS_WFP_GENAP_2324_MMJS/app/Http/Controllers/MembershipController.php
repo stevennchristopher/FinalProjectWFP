@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Membership;
+use App\Models\Customer;
 
 class MembershipController extends Controller
 {
@@ -11,7 +14,8 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        //
+        $data = Membership::all();
+        return view('membership.index', compact('data'));
     }
 
     /**
@@ -19,7 +23,8 @@ class MembershipController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::all();
+        return view('membership.create', compact('customers'));
     }
 
     /**
@@ -27,7 +32,15 @@ class MembershipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $namaMemb = $request->customer;
+        $pointMemb = $request->point;
+
+        $data = new Membership();
+        $data->user_id = $namaMemb;
+        $data->point = $pointMemb;
+        $data->save();
+
+        return redirect()->route('membership.index')->with('status','Horray ! Your data is successfully recorded !');
     }
 
     /**
@@ -57,8 +70,17 @@ class MembershipController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Membership $membership)
     {
-        //
+        try {
+            $deletedData = $membership;
+            $deletedData->delete();
+
+            return redirect()->route('membership.index')->with('status','Your data is sucessfully deleted !');
+        }
+        catch(\PDOException $ex) {
+            $msg = "Failed to delete data ! Make sure there is no related data before deleting it";
+            return redirect()->route('product.index')->with('error', $msg);
+        }
     }
 }
