@@ -27,13 +27,6 @@
         <label>Price of Product</label>
         <input type="number" class="form-control" name="product_price" placeholder="Enter price">
         <small class="form-text text-muted">Please write down the price of product here.</small>
-
-        <br><br>
-
-        <label>Image of Product</label>
-        <input type="text" class="form-control" name="product_image" placeholder="Enter image">
-        <small class="form-text text-muted">Please write down the image of product here.</small>
-
         <br><br>
 
         <label>Hotel of Product</label><br>

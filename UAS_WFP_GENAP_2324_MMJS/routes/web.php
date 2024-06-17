@@ -86,3 +86,7 @@ Route::post('hotel/simpanPhoto', [HotelController::class, 'simpanPhoto']);
 Route::post('product/simpanPhoto', [ProductController::class, 'simpanPhoto']);
 
 Route::post('product/delPhoto', [ProductController::class, 'delPhoto']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
