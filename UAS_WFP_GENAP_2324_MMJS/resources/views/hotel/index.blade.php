@@ -31,7 +31,13 @@
         @foreach ($data as $d)
           <div class="col" style="margin-bottom: 50px">
             <div class="card mx-auto" style="width: 30rem">
-            <img style="height: 190px" src="{{ asset('images/hotel/'.$d->image) }}" class="card-img-top">
+            @if (file_exists(public_path('images/hotel/'.$d->id.'.jpg')))
+                    <img style="height: 190px" src="{{ asset('images/hotel/'.$d->id.'.jpg') }}" class="card-img-top">
+                @else
+                    <a href="{{ url('hotel/uploadPhoto/'.$d->id) }}">
+                        <button class='btn btn-info' style="width: 100%; height: 190px;">Upload Foto Hotel</button>
+                    </a>
+            @endif
                 <div class="card-body">
                     <center><b class="card-title">{{$d->name}}</b></center>
                     <br>
