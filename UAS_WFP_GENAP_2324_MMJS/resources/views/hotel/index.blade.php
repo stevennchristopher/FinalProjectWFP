@@ -47,7 +47,7 @@
                     <p class="card-text m-3"><b>Phone: </b>{{$d->phone}}</p>
                     <p class="card-text m-3"><b>Email: </b>{{$d->email}}</p>
                     <p class="card-text m-3"><b>Rating: </b>{{$d->rating}}</p>
-                    <p class="card-text m-3"><b>Type of Hotel: </b>{{$d->name}}</p>
+                    <p class="card-text m-3"><b>Type of Hotel: </b>{{$d->types->name}}</p>
 
                     <p class="card-text m-3"><b>Product:</b>
                         {{-- @foreach ($d->products as $item)
@@ -58,10 +58,6 @@
                     </p>
                         <a class="m-3" href="{{ url('hotel/uploadLogo/'.$d->id) }}">
                             <button class='btn btn-info'>Upload Logo Hotel</button>
-                        </a>
-                    <br><br>
-                        <a class="m-3" href="{{ url('hotel/uploadPhoto/'.$d->id) }}">
-                            <button class='btn btn-info'>Upload Foto Hotel</button>
                         </a>
                     <br><br>
 
