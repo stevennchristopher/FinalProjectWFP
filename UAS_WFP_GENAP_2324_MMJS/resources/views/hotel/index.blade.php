@@ -11,7 +11,7 @@
 <body style="background-color:antiquewhite">
 
 @section('content')
-<center><h1 class="display-1">Pilihan hotel:</h1></center>
+<center><h1 class="display-1">Hotel List</h1></center>
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
@@ -25,7 +25,7 @@
     </ul>
     <div class="page-toolbar"></div>
 </div>
-
+<a href="{{ route('hotel.create') }}" class="btn btn-success">+ New Hotel</a><br><br>
 <div class="container">
     <div class="row">
         @foreach ($data as $d)

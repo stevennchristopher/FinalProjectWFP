@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Hotel;
+use App\Models\Type;
 
 class HotelController extends Controller
 {
@@ -27,7 +28,8 @@ class HotelController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all();
+        return view('hotel.create', compact('types'));
     }
 
     /**
@@ -35,7 +37,22 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required'
+       ]);
+
+       $data = new Hotel;
+       $data->name = $request->get('name');
+       $data->address = $request->get('address');
+       $data->phone = $request->get('phone');
+       $data->email = $request->get('email');
+       $data->rating = $request->get('rating');
+       $data->type_id = $request->get('type');
+       $data->save();
+       return redirect()->route('hotel.index')->with('status', 'Hotel has been successfully added');
     }
 
     /**
