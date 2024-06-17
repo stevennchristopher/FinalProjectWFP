@@ -53,20 +53,17 @@ class TypeProductsController extends Controller
 
     }
 
-    public function destroy(TypeProduct $typeproduct)
+    public function destroy(string $id)
     {
-        $user=Auth::user();
-        $this->authorize('delete-permission',$user);
-
-        try {
-            $deletedData = $typeproduct;
-            $deletedData->delete();
-
-            return redirect()->route('tipeproduk.index')->with('status','Your data is sucessfully deleted !');
+        try{
+            $data = TypeProduct::find($id);
+            $data->delete();
+            return redirect('tipeproduk')->with('status','successfully deleted', 'Your has been deleted');
+        } catch (\Throwable $th ){ 
+            $msg = "Delete error, this hotel has products and transactions data";
+            return redirect()->route('hotel.index')->with('status',$msg);
         }
-        catch(\PDOException $ex) {
-            $msg = "Failed to delete data ! Make sure there is no related data before deleting it";
-            return redirect()->route('tipeproduk.index')->with('error', $msg);
-        }
+
+
     }
 }
