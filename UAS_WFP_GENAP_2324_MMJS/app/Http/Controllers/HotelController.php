@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Hotel;
 use App\Models\Type;
+use App\Models\Product;
 
 class HotelController extends Controller
 {
@@ -19,7 +20,6 @@ class HotelController extends Controller
 
         //UNTUK INI HARUS PAKAI QUERYMODEL
         $queryModel = Hotel::all();
-
         return view('hotel.index', ['data'=>$queryModel]);
     }
 
@@ -82,9 +82,18 @@ class HotelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Hotel $hotel)
     {
-        //
+        try {
+            $deletedData = $hotel;
+            $deletedData->delete();
+
+            return redirect()->route('hotel.index')->with('status','Your data is sucessfully deleted !');
+        }
+        catch(\PDOException $ex) {
+            $msg = "Failed to delete data ! Make sure there is no related data before deleting it";
+            return redirect()->route('hotel.index')->with('error', $msg);
+        }
     }
 
     public function availableHotelRooms()
@@ -173,7 +182,7 @@ class HotelController extends Controller
     {
         $file = $request->file("file_photo");
         $folder = 'images/hotel/';
-        $filename = $request->hotel_id . ".jpg"; 
+        $filename = $request->hotel_id . ".jpg";
         $file->move($folder, $filename);
 
 

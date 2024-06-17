@@ -25,6 +25,10 @@
     </ul>
     <div class="page-toolbar"></div>
 </div>
+@if(@session('error'))
+    <div class="alert alert-danger ">{{ session('error') }}</div>
+@endif
+
 <a href="{{ route('hotel.create') }}" class="btn btn-success">+ New Hotel</a><br><br>
 <div class="container">
     <div class="row">
@@ -59,7 +63,13 @@
                         <a class="m-3" href="{{ url('hotel/uploadLogo/'.$d->id) }}">
                             <button class='btn btn-info'>Upload Logo Hotel</button>
                         </a>
-                    <br><br>
+                    <br>
+
+                    <form method="POST" action="{{route('hotel.destroy', $d->id)}}">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Delete" class="btn btn-danger m-3" onclick="return confirm('Are you sure to delete {{$d->id}} - {{$d->name}} ? ');">
+                    </form>
 
                     {{-- <a class="btn btn-info"  href="#detail_{{$d->id}}" data-toggle="modal">{{ $d->name }}</a> --}}
 

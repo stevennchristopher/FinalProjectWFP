@@ -51,7 +51,7 @@
                         <p class="card-text m-3"><b>Price: </b>${{$data->price}}</p>
                         <p class="card-text m-3"><b>Available: </b>{{$data->available_room}} rooms</p>
                         <p class="card-text m-3"><b>Hotel Name: </b>{{$data->hotels->name}}</p>
-                        <p class="card-text m-3"><b>Type of Products: </b>{{$data->tipeproduks->nama}}</p> 
+                        <p class="card-text m-3"><b>Type of Products: </b>{{$data->tipeproduks->nama}}</p>
                         <!-- <p class="card-text"><a class="btn btn-warning" href="{{ route('product.edit', $data->id)}}">Edit</a></p> -->
                         <p class="card-text m-3"><a href="#modalEditA" class="btn btn-warning" data-toggle="modal" onclick="getEditForm({{$data->id}})">Edit</a></p>
 
@@ -62,7 +62,7 @@
                             @method('DELETE')
                             <input type="submit" value="Delete" class="btn btn-danger m-3" onclick="return confirm('Are you sure to delete {{$data->id}} - {{$data->type}} ? ');">
                         </form>
-                        
+
                     </div>
                 {{-- <img style="height: 190px" src="{{ asset('images/product/'.$data->image) }}.jpg" class="card-img-top"> --}}
 
@@ -80,15 +80,9 @@
                         @endforeach
                     @endif
                     <a class="m-3" href="{{ url('product/uploadPhoto/'.$data->id)  }}">
-                            <button class='btn btn-info m-3'>Upload Foto</button>
-                        </a>
-                        
-               
+                        <button class='btn btn-info m-3'>Upload Foto</button>
+                    </a>
                     <br>
-
-
-
-                    
                 </div>
               </div>
             @endforeach

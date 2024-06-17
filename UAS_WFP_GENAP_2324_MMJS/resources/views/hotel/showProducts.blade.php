@@ -3,15 +3,14 @@
     <h4 class="modal-title">Products of hotel : {{$nama}}</h4>
   </div>
   <div class="modal-body">
-    <div class='row'>
         @foreach($data as $d)
-            <div class='col-md-4' style='border:1px solid #eee;text-align:center'>
-            <img src="{{ asset('images/prod/'.$d->id.'/'.$d->image) }}.jpg" height='200px' /></a> <br>
-            {{ $d->name }} <br>
-            Rp. {{ $d->price }}
-            </div>
+        <p style='m-5'>Name of Product: {{ $d->name }}</p>
+        <p style='m-5'>Rp. {{ $d->price }}</p>
+        <a href="{{ url('product/'.$d->id) }}">
+            <button class='btn btn-info'>Detail</button>
+        </a>
+        <br><br>
         @endforeach
-    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

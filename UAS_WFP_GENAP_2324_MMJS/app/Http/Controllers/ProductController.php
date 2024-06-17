@@ -97,6 +97,18 @@ class ProductController extends Controller
     {
         $data = Product::find($id);
 
+        $directory = public_path('images/prod/'.$id);
+        if(File::exists($directory))
+        {
+            $files = File::files($directory);
+            $filenames = [];
+            foreach ($files as $file) {
+                $filenames[] = $file->getFilename();
+            }
+            $data['filenames']=$filenames;
+        }
+
+
         //dd($data);
 
         return view('product.show', compact('data'));
