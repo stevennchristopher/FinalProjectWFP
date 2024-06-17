@@ -19,8 +19,8 @@
     @csrf
     @method("PUT")
     <div class="form-group">
-        <label>Type of Product</label>
-        <input type="text" class="form-control" name="product_type" placeholder="Enter type" value="{{$data->type}}">
+        <label>Name of Product</label>
+        <input type="text" class="form-control" name="product_nane" placeholder="Enter type" value="{{$data->type}}">
         <small class="form-text text-muted">Please write down the new type of product here.</small>
 
         <br><br>

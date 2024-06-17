@@ -70,7 +70,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $typeProduct = $request->product_type;
+        $typeProduct = $request->product_name;
         $priceProduct = $request->product_price;
         $imgProduct = $request->product_image;
         $hotelProduct = $request->product_hotel;
@@ -116,7 +116,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $updatedData = $product;
-        $updatedData->type = $request->product_type;
+        $updatedData->type = $request->product_name;
         $updatedData->price = $request->product_price;
         $updatedData->image = $request->product_image;
         $updatedData->hotel_id = $request->product_hotel;

@@ -29,22 +29,22 @@ class TypeProductsController extends Controller
 
     public function store(Request $request)
     {
-          
+
     }
 
     public function show(string $id)
     {
-        
+
     }
 
     public function edit(TypeProduct $type)
     {
-        
+
     }
 
     public function update(Request $request, TypeProduct $type)
     {
-        
+
     }
 
     public function destroy(TypeProduct $typeproducts)
