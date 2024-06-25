@@ -56,14 +56,15 @@ Type
                     <a href="#modalEditB" class="btn btn-info" data-toggle="modal" onclick="getEditFormB({{$d->id}})">Edit Type B</a>
 
                     @can('delete-permission', Auth::user())
-                    <a href="#" value="DeleteNoReload" class="btn btn-danger" onclick="if(confirm('Are you sure to delete {{$d->id}} - {{$d->name}} ? ')) deleteDataRemoveTR({{$d->id}})">Delete without Reload</a>
-                    @endcan
-
                     <form method="POST" action="{{route('type.destroy', $d->id)}}">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete {{$d->id}} - {{$d->name}} ? ');">
                     </form>
+                    <!-- <a href="#" value="DeleteNoReload" class="btn btn-danger" onclick="if(confirm('Are you sure to delete {{$d->id}} - {{$d->name}} ? ')) deleteDataRemoveTR({{$d->id}})">Delete without Reload</a> -->
+                    @endcan
+
+                   
                 </td>
                 {{-- <td>
                     <a class="btn btn-warning" href="{{ route('type.edit', $d->id)}}">Edit</a>
@@ -125,7 +126,7 @@ Type
        </div>
      </div>
 </div>
-
+/
 @section('javascript')
 <script>
     function getEditForm(type_id)

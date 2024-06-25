@@ -27,9 +27,9 @@ Membership
     @if(@session('error'))
         <div class="alert alert-danger ">{{ session('error') }}</div>
     @endif
-
+    @can('delete-permission', Auth::user())
     <a href="{{ route('membership.create') }}" class="btn btn-success">+ New Membership</a>
-
+    @endcan
     <table class="table" >
         <thead>
             <tr>
@@ -47,11 +47,13 @@ Membership
                 <td id="td_description_{{$d->id}}">{{ $d->point }}</td>
                 <td>
                     <a class="btn btn-warning" href="{{ route('membership.edit', $d->id)}}">Edit</a>
+                    @can('delete-permission', Auth::user())
                     <form method="POST" action="{{route('membership.destroy', $d->id)}}">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete {{$d->id}} - {{$d->name}} ? ');">
                     </form>
+                    @endcan
                 </td>
             </tr>
             @endforeach
