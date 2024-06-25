@@ -44,14 +44,14 @@ Membership
             <tr">
                 <td>{{ $d->id }}</td>
                 <td>{{ $d->customers->name }}</td>
-                <td id="td_description_{{$d->id}}">{{ $d->point }}</td>
+                <td>{{ $d->point }}</td>
                 <td>
-                    <a class="btn btn-warning" href="{{ route('membership.edit', $d->id)}}">Edit</a>
+                    <a class="btn btn-warning" href="{{ route('membership.edit', $d->id)}}">Edit</a><br><br>
                     @can('delete-permission', Auth::user())
                     <form method="POST" action="{{route('membership.destroy', $d->id)}}">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete {{$d->id}} - {{$d->name}} ? ');">
+                        <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete {{$d->id}} - {{$d->customers->name}} ? ');">
                     </form>
                     @endcan
                 </td>
