@@ -27,9 +27,9 @@ Transaction
     @if(@session('error'))
         <div class="alert alert-danger ">{{ session('error') }}</div>
     @endif
-
+    @can('delete-permission', Auth::user())
     <a href="{{ route('transaction.create') }}" class="btn btn-success">+ New Transaction</a>
-
+@endcan
     <a href="#modalCreate" data-toggle="modal" class="btn btn-info">+ New Transaction(with Modals)</a>
 
     <table class="table" >
@@ -61,16 +61,15 @@ Transaction
                 </td>
                 <td>
                     <a class="btn btn-warning" href="{{ route('transaction.edit', $d->id)}}">Edit</a>
-
                     <a href="#modalEditA" class="btn btn-warning" data-toggle="modal" onclick="getEditForm({{$d->id}})">Edit Transaction A</a>
-
-                    <a href="#" value="DeleteNoReload" class="btn btn-danger" onclick="if(confirm('Are you sure to delete {{$d->id}} - {{$d->transaction_date}} ? ')) deleteDataRemoveTR({{$d->id}})">Delete without Reload</a>
-
+                    <!-- <a href="#" value="DeleteNoReload" class="btn btn-danger" onclick="if(confirm('Are you sure to delete {{$d->id}} - {{$d->transaction_date}} ? ')) deleteDataRemoveTR({{$d->id}})">Delete without Reload</a> -->
+                    @can('delete-permission', Auth::user())
                     <form method="POST" action="{{route('transaction.destroy', $d->id)}}">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete transaction ID {{$d->id}} with customer {{$d->customers->name}} ? ');">
                     </form>
+                    @endcan
                 </td>
             </tr>
             @endforeach
