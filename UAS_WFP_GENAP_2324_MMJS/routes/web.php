@@ -11,7 +11,6 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\FrontEndController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\CustomerLoginController;
 
 /*
 |--------------------------------------------------------------------------

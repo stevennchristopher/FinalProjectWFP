@@ -434,7 +434,7 @@
                         <form action="{{route('logout')}}" method="post">
                           @csrf
                           <i class="fa fa-key"></i>
-                          <input type="submit" value="logout" class='btn btn-danger'/>
+                          <input type="submit" value="Logout" class='btn btn-danger'/>
                         </form>
                       </li>
 				</ul>

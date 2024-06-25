@@ -25,7 +25,7 @@
 
     <body>
         <!-- Top bar Start -->
-        <div class="top-bar">
+        {{-- <div class="top-bar">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Top bar End -->
 
         <!-- Nav Bar Start -->
@@ -57,13 +57,25 @@
                             <a href="checkout.html" class="nav-item nav-link">Checkout</a>
                         </div>
                         <div class="navbar-nav ml-auto">
+                            @guest
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                                 <div class="dropdown-menu">
-                                    <a href="{{ route('login')}}" class="dropdown-item">Login</a>
-                                    <a href="{{ route('register')}}" class="dropdown-item">Register</a>
+                                        <a href="{{ route('login') }}" class="dropdown-item">Login</a>
+                                        <a href="{{ route('register') }}" class="dropdown-item">Register</a>
                                 </div>
                             </div>
+                            @else
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Welcome, {{ Auth::user()->name }}</a>
+                                    <div class="dropdown-menu">
+                                        <form action="{{route('logout')}}" method="post">
+                                            @csrf
+                                            <input type="submit" value="Logout" class='dropdown-item'/>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endguest
                         </div>
                     </div>
                 </nav>
@@ -90,10 +102,10 @@
                     </div>
                     <div class="col-md-3">
                         <div class="user">
-                            <a href="wishlist.html" class="btn wishlist">
+                            {{-- <a href="wishlist.html" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
                                 <span>(0)</span>
-                            </a>
+                            </a> --}}
                             <a href="{{ route('cart')}}" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>
@@ -112,13 +124,13 @@
         <!-- Bottom Bar End -->
 
         <!-- Breadcrumb Start -->
-        <div class="breadcrumb-wrap">
+        {{-- <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('laralux.index')}}">Home</a></li>
                 </ul>
             </div>
-        </div>
+        </div> --}}
         <!-- Breadcrumb End -->
         @if (session('status'))
         <div class="alert alert-success">

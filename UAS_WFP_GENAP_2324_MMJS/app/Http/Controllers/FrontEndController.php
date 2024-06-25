@@ -148,6 +148,8 @@ class FrontEndController extends Controller
         $cart = session('cart');
         $customer = Auth::customer();
 
+        //checokout ini kan ngambil id customer, nah tp authnya kan punyanya user, harus dicari tau untuk ngehubunginnya buat ndapetin id customer
+
         $t = new Transaction();
         $t->customer_id = $customer->id;
         $t->transaction_date = Carbon::now()->toDateTimeString();
