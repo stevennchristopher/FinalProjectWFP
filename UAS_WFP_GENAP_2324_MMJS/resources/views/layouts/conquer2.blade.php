@@ -501,6 +501,13 @@
                     </a>
                 </li>
                 <li class="start active ">
+                    <a href="{{ route('fasilitas.index') }}">
+                    <i class="icon-star"></i>
+                    <span class="title">Fasilitas</span>
+                    <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="start active ">
                     <a href="{{ route('tipeproduk.index') }}">
                     <i class="icon-star"></i>
                     <span class="title">Product Type</span>

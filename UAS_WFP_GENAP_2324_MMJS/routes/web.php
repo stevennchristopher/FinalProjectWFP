@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\TypeProductsController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MembershipController;
@@ -32,6 +33,7 @@ Route::resource('type', TypeController::class)->middleware('auth');
 Route::resource('tipeproduk', TypeProductsController::class)->middleware('auth');
 Route::resource('membership', MembershipController::class)->middleware('auth');
 Route::resource('customer', CustomerController::class)->middleware('auth');
+Route::resource('fasilitas', FasilitasController::class)->middleware('auth');
 
 Route::get('report/availableHotelRooms', [HotelController::class, 'availableHotelRooms'])
     ->name('reportShowHotel');

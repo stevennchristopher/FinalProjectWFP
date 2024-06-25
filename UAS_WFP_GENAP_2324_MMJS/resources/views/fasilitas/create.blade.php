@@ -1,7 +1,7 @@
 @extends('layouts.conquer2')
 
 @section('content')
-<h3 class="page-title">Form Create Hotel Customer</h3>
+<h3 class="page-title">Form Create Fasilitas</h3>
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
@@ -10,23 +10,33 @@
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href="#">Create Customer</a>
+            <a href="#">Create Fasilitas</a>
         </li>
     </ul>
     <div class="page-toolbar"></div>
 </div>
-<form method="POST" action="{{ route('customer.store') }}">
+<form method="POST" action="{{ route('fasilitas.store') }}">
     @csrf
     <div class="form-group">
-        <label>Name of Customer</label>
-        <input type="text" class="form-control" id="input_name" name="customer_name" placeholder="Enter name">
-        <small class="form-text text-muted">Please write down the name of customer here.</small>
+        <label>Name of Fasilitas</label>
+        <input type="text" class="form-control" id="input_name" name="fasilitas_name" placeholder="Enter name">
+        <small class="form-text text-muted">Please write down the new name of fasilitas here.</small>
 
         <br><br>
 
-        <label>Address of Customer</label>
-        <input type="text" class="form-control" id="input_address" name="customer_address" placeholder="Enter address">
-        <small class="form-text text-muted">Please write down the address of customer here.</small>
+        <label>Description of Fasilitas</label>
+        <input type="text" class="form-control" id="input_description" name="fasilitas_description" placeholder="Enter description">
+        <small class="form-text text-muted">Please write down the new description of fasilitas here.</small>
+
+        <br><br>
+
+        <label>Product of Facility</label><br>
+        <select name="product_fasilitas"  class="form-control">
+            @foreach ($dataProduct as $data)
+                <option value="{{$data->id}}">{{$data->name}}</option>
+            @endforeach
+        </select><br>
+        <small class="form-text text-muted">Please choose the hotel of product here.</small>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 
