@@ -27,4 +27,9 @@ class Product extends Model
     {
         return $this->belongsTo(TypeProduct::class, 'tipeproduk_id');
     }
+
+    public function fasiltas(): HasMany
+    {
+        return $this->hasMany(Fasilitas::class, 'product_id', 'id');
+    }
 }
