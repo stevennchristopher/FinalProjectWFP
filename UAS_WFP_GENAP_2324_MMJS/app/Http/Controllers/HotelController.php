@@ -86,7 +86,7 @@ class HotelController extends Controller
         $data->rating = $request->get('rating');
         $data->type_id = $request->get('type');
         $data->save();
-        return redirect('data')->with('status','successfully updated', 'Hotel has been updated');
+        return redirect()->route('hotel.index')->with('status','successfully updated', 'Hotel has been updated');
  
     }
 
