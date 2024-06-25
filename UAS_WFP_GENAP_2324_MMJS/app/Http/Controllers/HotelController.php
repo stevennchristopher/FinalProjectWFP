@@ -68,7 +68,9 @@ class HotelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = Hotel::find($id);
+        $types = Type::all();
+        return view ('hotel.edit', compact('data','types'));
     }
 
     /**
@@ -76,7 +78,16 @@ class HotelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = Hotel::find($id);
+        $hotel->name = $request->get('name');
+        $hotel->address = $request->get('address');
+        $hotel->phone = $request->get('phone');
+        $hotel->email = $request->get('email');
+        $hotel->rating = $request->get('rating');
+        $hotel->type_id = $request->get('type');
+        $hotel->save();
+        return redirect('hotel')->with('status','successfully updated', 'Hotel has been updated');
+ 
     }
 
     /**

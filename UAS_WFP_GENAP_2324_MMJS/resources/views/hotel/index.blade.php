@@ -30,7 +30,6 @@
 @endif
 
 <a href="{{ route('hotel.create') }}" class="btn btn-success">+ New Hotel</a><br><br>
-<a href="{{ route('transaction.create') }}" class="btn btn-success">Want to Reserve?</a><br><br>
 <div class="container">
     <div class="row">
         @foreach ($data as $d)
@@ -64,8 +63,8 @@
                         <a class="m-3" href="{{ url('hotel/uploadLogo/'.$d->id) }}">
                             <button class='btn btn-info'>Upload Logo Hotel</button>
                         </a>
-                    <br>
 
+                    <a class="m-3 btn btn-warning" href="{{ route('hotel.edit', $d->id)}}">Edit Data</a>
                     <form method="POST" action="{{route('hotel.destroy', $d->id)}}">
                         @csrf
                         @method('DELETE')

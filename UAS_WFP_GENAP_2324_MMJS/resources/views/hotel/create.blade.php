@@ -1,10 +1,5 @@
 @extends('layouts.conquer2')
 
-@section('title')
-Add new hotel
-
-@endsection
-
 @section('content')
 <center><h1 class="display-1">Add New Hotel</h1></center>
 <form method="POST" action="{{route('hotel.store')}}">
