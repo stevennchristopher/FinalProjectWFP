@@ -40,28 +40,28 @@ class TypeProductsController extends Controller
 
     public function show(string $id)
     {
-
+        
     }
 
-    public function edit(TypeProduct $typeproduct)
+    public function edit(TypeProduct $tipeproduk)
     {
-        $data = $typeproduct;
+        $data = $tipeproduk;
         return view('tipeproduk.edit', compact('data'));
     }
 
-    public function update(Request $request, TypeProduct $typeproduct)
+    public function update(Request $request, TypeProduct $tipeproduk)
     {
-        $updatedData = $typeproduct;
+        $updatedData = $tipeproduk;
         $updatedData->nama = $request->type_name;
         $updatedData->update();
 
         return redirect()->route('tipeproduk.index')->with('status','Horray ! Your data is successfully updated !');
-  
     }
 
     public function destroy(string $id)
     {
-        try{
+        try
+        {
             $data = TypeProduct::find($id);
             $data->delete();
             return redirect('tipeproduk')->with('status','successfully deleted', 'Your has been deleted');

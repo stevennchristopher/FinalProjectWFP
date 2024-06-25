@@ -20,7 +20,7 @@
     @method("PUT")
     <div class="form-group">
         <label>Name of Type</label>
-        <input type="text" class="form-control" id="input_name" name="type_name" placeholder="Enter name" value="{{ $data->name }}">
+        <input type="text" class="form-control" id="input_name" name="type_name" placeholder="Enter name" value="{{ $data->nama }}">
         <small class="form-text text-muted">Please write down the new name of type here.</small>
 
         <br>
