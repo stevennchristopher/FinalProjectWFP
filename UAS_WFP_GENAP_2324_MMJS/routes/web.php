@@ -11,6 +11,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\FrontEndController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\CustomerLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,7 @@ Route::get('/', [FrontEndController::class, 'index'])->name('laralux.index');
 Route::get('/laralux', [FrontEndController::class, 'index'])->name('laralux.index');
 Route::get('/laralux/{laralux}', [FrontEndController::class, 'show'])->name('laralux.show');
 
+
 Route::middleware(['auth'])->group(function(){
     Route::get('laralux/user/cart', function(){
         return view('frontend.cart');
@@ -111,3 +113,5 @@ Route::middleware(['auth'])->group(function(){
     Route::post('laralux/cart/reduceQty', [FrontEndController::class, 'reduceQuantity'])->name('redQty');
     Route::get('laralux/cart/checkout',[FrontEndController::class,'checkout'])->name('checkout');
 });
+
+Route::get('/customer/login', [CustomerLoginController::class, 'showLoginForm'])->name('custom.login');
