@@ -23,7 +23,7 @@ Add New Membership
 <form method="POST" action="{{route('membership.store')}}">
 @csrf
     <div class="form-group">
-    <label for="name">Name of Customer</label>
+    <label for="customer">Name of Customer</label>
         <select name="customer" class="form-control" id="customer">
             @foreach ($customers as $d)
             <option value="{{$d->id}}"> {{$d->name}}</option>

@@ -36,7 +36,7 @@ class MembershipController extends Controller
         $pointMemb = $request->point;
 
         $data = new Membership();
-        $data->user_id = $namaMemb;
+        $data->customer_id = $namaMemb;
         $data->point = $pointMemb;
         $data->save();
 
