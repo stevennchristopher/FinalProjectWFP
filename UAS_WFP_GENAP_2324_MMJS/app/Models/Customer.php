@@ -16,6 +16,6 @@ class Customer extends Model
 
     public function memberships(): HasOne
     {
-        return $this->hasOne(Membership::class, 'user_id', 'id');
+        return $this->hasOne(Membership::class, 'customer_id', 'id');
     }
 }

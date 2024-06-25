@@ -46,6 +46,7 @@ Membership
                 <td>{{ $d->customers->name }}</td>
                 <td id="td_description_{{$d->id}}">{{ $d->point }}</td>
                 <td>
+                    <a class="btn btn-warning" href="{{ route('membership.edit', $d->id)}}">Edit</a>
                     <form method="POST" action="{{route('membership.destroy', $d->id)}}">
                         @csrf
                         @method('DELETE')

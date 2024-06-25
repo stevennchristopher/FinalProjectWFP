@@ -54,17 +54,23 @@ class MembershipController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Membership $membership)
     {
-        //
+        $data = $membership;
+        $dataCustomer = Customer::all();
+        return view('membership.edit', compact('data', 'dataCustomer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Membership $membership)
     {
-        //
+        $updatedData = $membership;
+        $updatedData->customer_id = $request->membership_customer;
+        $updatedData->point = $request->membership_point;
+        $updatedData->update();
+        return redirect()->route('membership.index')->with('status','Horray ! Your data is successfully updated !');
     }
 
     /**
