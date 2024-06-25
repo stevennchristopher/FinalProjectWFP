@@ -37,7 +37,6 @@ Transaction
             <tr>
                 <th>ID</th>
                 <th>Customer</th>
-                <th>Kasir</th>
                 <th>Tanggal Transaction</th>
                 <th>Action</th>
                 <th>Action</th>
@@ -48,7 +47,6 @@ Transaction
             <tr id="tr_{{$d->id}}">
                 <td>{{ $d->id }}</td>
                 <td>{{ $d->customers->name }}</td>
-                <td>{{ $d->users->name }}</td>
                 <td>{{ $d->transaction_date }}</td>
                 <td>
                     <a class="btn btn-default" data-toggle="modal" href="#myModal" onclick="getDetailData({{ $d->id}});">Lihat Rincian Pembelian</a>
@@ -71,7 +69,7 @@ Transaction
                     <form method="POST" action="{{route('transaction.destroy', $d->id)}}">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete transaction ID {{$d->id}} with customer {{$d->customers->name}} and cashier {{$d->users->name}} ? ');">
+                        <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete transaction ID {{$d->id}} with customer {{$d->customers->name}} ? ');">
                     </form>
                 </td>
             </tr>
@@ -99,16 +97,6 @@ Transaction
                         @endforeach
                     </select><br>
                     <small class="form-text text-muted">Please choose the customer of the transaction here.</small>
-
-                    <br><br>
-
-                    <label>Cashier of Transaction</label><br>
-                    <select name="transaction_cashier">
-                        @foreach ($dataCashier as $data)
-                            <option value="{{$data->id}}">{{$data->name}}</option>
-                        @endforeach
-                    </select><br>
-                    <small class="form-text text-muted">Please choose the cashier of the transaction here.</small>
 
                     <br><br>
 

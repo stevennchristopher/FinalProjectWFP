@@ -28,16 +28,6 @@
 
         <br><br>
 
-        <label>Cashier of Transaction</label><br>
-        <select name="transaction_cashier">
-            @foreach ($dataCashier as $data)
-                <option value="{{$data->id}}">{{$data->name}}</option>
-            @endforeach
-        </select><br>
-        <small class="form-text text-muted">Please choose the cashier of the transaction here.</small>
-
-        <br><br>
-
         <div id="productContainer">
             <label>Product of Transaction</label><br>
             <div class="form-group">

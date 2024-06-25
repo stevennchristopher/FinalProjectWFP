@@ -45,7 +45,6 @@ class TransactionController extends Controller
 
         $product_ids = $request->transaction_product;
         $quantities = $request->transaction_product_quantity;
-        $prices = $request->transaction_product_subtotal;
 
         $data = new Transaction();
         $data->customer_id = $custTransaksi;
@@ -54,9 +53,12 @@ class TransactionController extends Controller
 
         $dataproducts = [];
         for ($i = 0; $i < count($product_ids); $i++) {
+            $product = Product::find($product_ids[$i]);
+            $prices =  $product->price;
+
             $dataproducts[$product_ids[$i]] = [
                 'quantity' => $quantities[$i],
-                'subtotal' => $quantities[$i] * $prices[$i]
+                'subtotal' => $quantities[$i] * $prices
             ];
         }
 

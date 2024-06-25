@@ -8,7 +8,7 @@
                 <div class="col-md-4">
                     @foreach ($products as $p)
                         <div class="card mb-4 box-shadow">
-                            <img class="card-img-top" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;">
+                            <img src="{{ asset('images/hotel/'.$p->hotels->id.'.jpg') }}" class="card-img-top" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $p->name }}</h5>
                                 <p class="card-text">Hotel : {{ $p->hotels->name }}</p>
