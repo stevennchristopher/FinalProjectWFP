@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Transaction;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\File;
 
@@ -138,5 +141,24 @@ class FrontEndController extends Controller
         session()->put('cart',$cart);
 
         return redirect()->back()->with("status", "Produk Telah dibuang dari Cart");
+    }
+
+    public function checkout()
+    {
+        $cart = session('cart');
+        $user = Auth::user();
+
+        $t = new Transaction();
+        $t->user_id = $user->id;
+        $t->customer_id = 1; //need to fix later
+        $t->transaction_date = Carbon::now()->toDateTimeString();
+        $t->save();
+
+        //insert into junction table product_transaction using eloquent
+        $t->insertProducts($cart,$user);
+        
+        session()->forget('cart');
+        return redirect()->route('laralux.index')->with('status','Checkout berhasil');
+
     }
 }
