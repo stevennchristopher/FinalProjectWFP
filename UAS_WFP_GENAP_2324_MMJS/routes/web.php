@@ -9,6 +9,7 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\TypeProductsController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\FrontEndController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -22,9 +23,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('frontend.index');
+// });
 
 Route::resource('product', ProductController::class)->middleware('auth');
 Route::resource('hotel', HotelController::class)->middleware('auth');
@@ -93,3 +94,19 @@ Route::post('hotel/simpanPhoto', [HotelController::class, 'simpanPhoto']);
 Route::post('product/simpanPhoto', [ProductController::class, 'simpanPhoto']);
 
 Route::post('product/delPhoto', [ProductController::class, 'delPhoto']);
+
+Route::get('/', [FrontEndController::class, 'index'])->name('laralux.index');
+Route::get('/laralux/{laralux}', [FrontEndController::class, 'show'])->name('laralux.show');
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('laralux/user/cart', function(){
+        return view('frontend.cart');
+    })->name('cart');
+
+    Route::get('laralux/cart/add/{id}', [FrontEndController::class, 'addToCart'])->name('addCart');
+    Route::get('laralux/cart/delete/{id}', [FrontEndController::class, 'deleteFromCart'])->name('delFromCart');
+
+    Route::post('laralux/cart/addQty', [FrontEndController::class, 'addQuantity'])->name('addQty');
+    Route::post('laralux/cart/reduceQty', [FrontEndController::class, 'reduceQuantity'])->name('redQty');
+    Route::get('laralux/cart/checkout',[FrontEndController::class,'checkout'])->name('checkout');
+});
