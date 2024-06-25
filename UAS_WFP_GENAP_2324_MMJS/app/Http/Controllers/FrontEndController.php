@@ -146,17 +146,16 @@ class FrontEndController extends Controller
     public function checkout()
     {
         $cart = session('cart');
-        $user = Auth::user();
+        $customer = Auth::customer();
 
         $t = new Transaction();
-        $t->user_id = $user->id;
-        $t->customer_id = 1; //need to fix later
+        $t->customer_id = $customer->id;
         $t->transaction_date = Carbon::now()->toDateTimeString();
         $t->save();
 
         //insert into junction table product_transaction using eloquent
-        $t->insertProducts($cart,$user);
-        
+        $t->insertProducts($cart, $customer);
+
         session()->forget('cart');
         return redirect()->route('laralux.index')->with('status','Checkout berhasil');
 
