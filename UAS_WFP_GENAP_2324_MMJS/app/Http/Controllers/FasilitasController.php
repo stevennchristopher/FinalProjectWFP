@@ -45,7 +45,9 @@ class FasilitasController extends Controller
     public function edit(Fasilitas $fasilita)
     {
         $data = $fasilita;
-        return view('fasilitas.edit', compact('data'));
+        $dataProduct = Product::all();
+
+        return view('fasilitas.edit', compact('data', 'dataProduct'));
     }
 
     public function update(Request $request, Fasilitas $fasilita)
@@ -53,6 +55,7 @@ class FasilitasController extends Controller
         $updatedData = $fasilita;
         $updatedData->name = $request->fasilitas_name;
         $updatedData->description = $request->fasilitas_description;
+        $updatedData->product_id = $request->product_fasilitas;
         $updatedData->update();
         return redirect()->route('fasilitas.index')->with('status','Horray ! Your data is successfully updated !');
 

@@ -28,6 +28,20 @@
         <label>Description of Fasilitas</label>
         <input type="text" class="form-control" id="input_description" name="fasilitas_description" placeholder="Enter description" value="{{$data->description}}">
         <small class="form-text text-muted">Please write down the new description of fasilitas here.</small>
+
+        <br><br>
+
+        <label>Product of Facility</label><br>
+        <select name="product_fasilitas"  class="form-control">
+            @foreach ($dataProduct as $d)
+                @if ($data->id == $d->id)
+                    <option value="{{$d->id}}" selected>{{$d->name}}</option>
+                @else
+                    <option value="{{$d->id}}">{{$d->name}}</option>
+                @endif
+            @endforeach
+        </select><br>
+        <small class="form-text text-muted">Please choose the hotel of product here.</small>
     </div>
     <button type="submit" class="btn btn-primary">Update</button>
 
