@@ -42,7 +42,7 @@ class FasilitasController extends Controller
 
     }
 
-    public function edit(Customer $customer)
+    public function edit(Fasilitas $fasilitas)
     {
         $data = $fasilitas;
         return view('fasilitas.edit', compact('data'));
