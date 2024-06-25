@@ -37,7 +37,6 @@
                                 </div>
                                 <div class="action">
                                     <a class="btn" href="{{route('addCart',$product->id)}}"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                                    <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Buy Now</a>
                                 </div>
                             </div>
                         </div>

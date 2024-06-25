@@ -117,7 +117,7 @@
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Products</a></li>
-                    <li class="breadcrumb-item active">Login & Register</li>
+                    <li class="breadcrumb-item active"><a href="#">Login & Register</li>
                 </ul>
             </div>
         </div>
