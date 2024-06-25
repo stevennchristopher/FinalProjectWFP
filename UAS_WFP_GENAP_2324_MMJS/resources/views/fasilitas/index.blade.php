@@ -47,7 +47,7 @@ Fasilitas
                 <td>{{ $d->description }}</td>
                 <td>{{ $d->products->name }}</td>
                 <td>
-                    <a class="btn btn-warning" href="{{ route('fasilitas.edit', $d->id)}}">Edit</a>
+                    <a class="btn btn-warning" href="{{ route('fasilitas.edit', $d->id)}}">Edit</a><br><br>
 
                     <form method="POST" action="{{route('fasilitas.destroy', $d->id)}}">
                         @csrf

@@ -42,15 +42,15 @@ class FasilitasController extends Controller
 
     }
 
-    public function edit(Fasilitas $fasilitas)
+    public function edit(Fasilitas $fasilita)
     {
-        $data = $fasilitas;
+        $data = $fasilita;
         return view('fasilitas.edit', compact('data'));
     }
 
-    public function update(Request $request, Fasilitas $fasilitas)
+    public function update(Request $request, Fasilitas $fasilita)
     {
-        $updatedData = $fasilitas;
+        $updatedData = $fasilita;
         $updatedData->name = $request->fasilitas_name;
         $updatedData->description = $request->fasilitas_description;
         $updatedData->update();
@@ -58,10 +58,10 @@ class FasilitasController extends Controller
 
     }
 
-    public function destroy(Fasilitas $fasilitas)
+    public function destroy(Fasilitas $fasilita)
     {
         try {
-            $deletedData = $fasilitas;
+            $deletedData = $fasilita;
             $deletedData->delete();
 
             return redirect()->route('fasilitas.index')->with('status','Your data is sucessfully deleted !');
