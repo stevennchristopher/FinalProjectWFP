@@ -45,12 +45,18 @@ class TypeProductsController extends Controller
 
     public function edit(TypeProduct $typeproduct)
     {
-
+        $data = $typeproduct;
+        return view('tipeproduk.edit', compact('data'));
     }
 
     public function update(Request $request, TypeProduct $typeproduct)
     {
+        $updatedData = $typeproduct;
+        $updatedData->nama = $request->type_name;
+        $updatedData->update();
 
+        return redirect()->route('tipeproduk.index')->with('status','Horray ! Your data is successfully updated !');
+  
     }
 
     public function destroy(string $id)

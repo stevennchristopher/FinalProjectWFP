@@ -42,8 +42,9 @@ Product Type
             <tr>
                 <td>{{ $d->id }}</td>
                 <td>{{ $d->nama }}</td>
-                <td>
-                    <form method="POST" action="{{route('tipeproduk.destroy', $d->id)}}">
+                
+                <td><a class="btn btn-warning" href="{{ route('tipeproduk.edit', $d->id)}}">Edit</a></td>
+                <td><form method="POST" action="{{route('tipeproduk.destroy', $d->id)}}">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete {{$d->id}} - {{$d->nama}} ? ');">
