@@ -8,7 +8,7 @@
                     <div class="cart-page-inner">
                         <div class="table-responsive">
                             @php
-                                $total = 0;
+                                $subtotal = 0;
                             @endphp
 
                             @if(@session('status'))
@@ -59,7 +59,7 @@
                                                             class="fa fa-trash"></i></a></td>
                                             </tr>
                                             @php
-                                                $total += $item['quantity'] * $item['price'];
+                                                $subtotal += $item['quantity'] * $item['price'];
                                             @endphp
                                         @endforeach
                                     @else
@@ -87,6 +87,12 @@
                                 <div class="cart-summary">
                                     <div class="cart-content">
                                         <h1>Cart Summary</h1>
+                                        <h2>Subtotal<span>{{'IDR '.$subtotal}}</span></h2>
+                                        @php
+                                                $tax = $subtotal * 11/100;
+                                                $total = $subtotal + $tax;
+                                        @endphp
+                                        <h2>Tax 11%<span>{{'IDR '.$tax}}</span></h2>
                                         <h2>Grand Total<span>{{'IDR '.$total}}</span></h2>
                                     </div>
                                     <div class="cart-btn">
