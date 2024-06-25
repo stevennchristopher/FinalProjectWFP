@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-md-7">
                             <div class="product-content">
-                                <div class="title"><h2>{{$product->type}}</h2></div>
+                                <div class="title"><h2>{{$product->name}}</h2></div>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>

@@ -4,16 +4,16 @@
 <div class="product-view">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-view-top">
                             <div class="row">
                     @foreach ($product as $p)
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="product-item">
                             <div class="product-title">
-                                <a href="{{route('laralux.show',$p->id)}}">{{ $p->type}}</a>
+                                <a href="{{route('laralux.show',$p->id)}}">{{ $p->name}}</a>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>

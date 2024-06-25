@@ -20,10 +20,9 @@ class TransactionController extends Controller
 
         //untuk yang di modal
         $dataCustomer = Customer::all();
-        $dataCashier = User::all();
         $dataProduct = Product::all();
 
-        return view('transaction.index', ['data'=>$queryModel, 'dataCustomer'=>$dataCustomer, 'dataCashier'=>$dataCashier, 'dataProduct'=>$dataProduct]);
+        return view('transaction.index', ['data'=>$queryModel, 'dataCustomer'=>$dataCustomer, 'dataProduct'=>$dataProduct]);
     }
 
     /**
@@ -32,10 +31,9 @@ class TransactionController extends Controller
     public function create()
     {
         $dataCustomer = Customer::all();
-        $dataCashier = User::all();
         $dataProduct = Product::all();
 
-        return view('transaction.create', compact('dataCustomer', 'dataCashier', 'dataProduct'));
+        return view('transaction.create', compact('dataCustomer', 'dataProduct'));
     }
 
     /**
@@ -44,7 +42,6 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         $custTransaksi = $request->transaction_customer;
-        $cashierTransaksi = $request->transaction_cashier;
 
         $product_ids = $request->transaction_product;
         $quantities = $request->transaction_product_quantity;
@@ -52,7 +49,6 @@ class TransactionController extends Controller
 
         $data = new Transaction();
         $data->customer_id = $custTransaksi;
-        $data->user_id = $cashierTransaksi;
         $data->transaction_date = now();
         $data->save();
 
@@ -84,9 +80,8 @@ class TransactionController extends Controller
     {
         $data = $transaction;
         $dataCustomer = Customer::all();
-        $dataCashier = User::all();
 
-        return view('transaction.edit', compact('data', 'dataCustomer' , 'dataCashier'));
+        return view('transaction.edit', compact('data', 'dataCustomer'));
     }
 
     /**
@@ -96,7 +91,6 @@ class TransactionController extends Controller
     {
         $updatedData = $transaction;
         $updatedData->customer_id = $request->transaction_customer;
-        $updatedData->user_id = $request->transaction_cashier;
         $updatedData->transaction_date = $request->transaction_date;
         $updatedData->update();
 
@@ -135,10 +129,9 @@ class TransactionController extends Controller
         $id = $request->id;
         $data = Transaction::find($id);
         $dataCustomer = Customer::all();
-        $dataCashier = User::all();
         return response()->json(array(
         'status' => 'oke',
-        'msg' => view('transaction.getEditForm', compact('data','dataCustomer','dataCashier'))->render()
+        'msg' => view('transaction.getEditForm', compact('data','dataCustomer'))->render()
         ),200);
     }
 

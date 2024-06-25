@@ -96,6 +96,7 @@ Route::post('product/simpanPhoto', [ProductController::class, 'simpanPhoto']);
 Route::post('product/delPhoto', [ProductController::class, 'delPhoto']);
 
 Route::get('/', [FrontEndController::class, 'index'])->name('laralux.index');
+Route::get('/laralux', [FrontEndController::class, 'index'])->name('laralux.index');
 Route::get('/laralux/{laralux}', [FrontEndController::class, 'show'])->name('laralux.show');
 
 Route::middleware(['auth'])->group(function(){

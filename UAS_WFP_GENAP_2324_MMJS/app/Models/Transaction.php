@@ -12,11 +12,6 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    public function users(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
-
     public function customers(): BelongsTo
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
