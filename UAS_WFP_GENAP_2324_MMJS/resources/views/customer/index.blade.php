@@ -27,9 +27,9 @@ Customer
         <div class="alert alert-danger ">{{ session('error') }}</div>
     @endif
 
-    <a href="{{ route('customer.create') }}" class="btn btn-success">+ New Customer</a>
+    {{-- <a href="{{ route('customer.create') }}" class="btn btn-success">+ New Customer</a> --}}
 
-    <a href="#modalCreate" data-toggle="modal" class="btn btn-info">+ New Customer(with Modals)</a>
+    {{-- <a href="#modalCreate" data-toggle="modal" class="btn btn-info">+ New Customer(with Modals)</a> --}}
 
     <table class="table" >
         <thead>
@@ -47,17 +47,17 @@ Customer
                 <td>{{ $d->name }}</td>
                 <td>{{ $d->address }}</td>
                 <td>
-                    <a class="btn btn-warning" href="{{ route('customer.edit', $d->id)}}">Edit</a>
+                    {{-- <a class="btn btn-warning" href="{{ route('customer.edit', $d->id)}}">Edit</a> --}}
 
-                    <a href="#modalEditA" class="btn btn-warning" data-toggle="modal" onclick="getEditForm({{$d->id}})">Edit Customer A</a>
+                    <a href="#modalEditA" class="btn btn-warning" data-toggle="modal" onclick="getEditForm({{$d->id}})">Edit</a>
 
-                    <a href="#" value="DeleteNoReload" class="btn btn-danger" onclick="if(confirm('Are you sure to delete {{$d->id}} - {{$d->name}} ? ')) deleteDataRemoveTR({{$d->id}})">Delete without Reload</a>
+                    {{-- <a href="#" value="DeleteNoReload" class="btn btn-danger" onclick="if(confirm('Are you sure to delete {{$d->id}} - {{$d->name}} ? ')) deleteDataRemoveTR({{$d->id}})">Delete without Reload</a> --}}
 
-                    <form method="POST" action="{{route('customer.destroy', $d->id)}}">
+                    {{-- <form method="POST" action="{{route('customer.destroy', $d->id)}}">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure to delete {{$d->id}} - {{$d->name}} ? ');">
-                    </form>
+                    </form> --}}
                 </td>
             </tr>
             @endforeach

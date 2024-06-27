@@ -39,6 +39,8 @@
                                                             @foreach ($item['photo[]'] as $filename)
                                                                 <img style="height: 190px" src="{{ asset('images/prod/'.$item['id'].'/'.$filename) }}" class="card-img-top"/><br>
                                                             @endforeach
+                                                        @else
+                                                            <img src="{{asset('images/blank.jpg')}}">
                                                         @endif
                                                         <p>{{ $item['name'] }}</p>
                                                     </div>

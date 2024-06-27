@@ -18,6 +18,8 @@
                                         @foreach ($product->filenames as $filename)
                                             <img style="height: 190px" src="{{asset('images/prod/'.$product->id.'/'.$filename)}}" class="card-img-top"/><br>
                                         @endforeach
+                                    @else
+                                        <img src="{{asset('images/blank.jpg')}}">
                                     @endif
                                 </div>
                         </div>

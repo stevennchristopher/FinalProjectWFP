@@ -27,14 +27,14 @@ use Illuminate\Support\Facades\Auth;
 //     return view('frontend.index');
 // });
 
-Route::resource('product', ProductController::class)->middleware('auth');
-Route::resource('hotel', HotelController::class)->middleware('auth');
-Route::resource('transaction', TransactionController::class);
-Route::resource('type', TypeController::class)->middleware('auth');
-Route::resource('tipeproduk', TypeProductsController::class)->middleware('auth');
-Route::resource('membership', MembershipController::class)->middleware('auth');
-Route::resource('customer', CustomerController::class)->middleware('auth');
-Route::resource('fasilitas', FasilitasController::class)->middleware('auth');
+Route::resource('product', ProductController::class)->middleware(['auth', 'role:owner,employee']);
+Route::resource('hotel', HotelController::class)->middleware(['auth', 'role:owner,employee']);
+Route::resource('transaction', TransactionController::class)->middleware(['auth', 'role:owner,employee']);
+Route::resource('type', TypeController::class)->middleware(['auth', 'role:owner,employee']);
+Route::resource('tipeproduk', TypeProductsController::class)->middleware(['auth', 'role:owner,employee']);
+Route::resource('membership', MembershipController::class)->middleware(['auth', 'role:owner,employee']);
+Route::resource('customer', CustomerController::class)->middleware(['auth', 'role:owner,employee']);
+Route::resource('fasilitas', FasilitasController::class)->middleware(['auth', 'role:owner,employee']);
 
 Route::get('report/availableHotelRooms', [HotelController::class, 'availableHotelRooms'])
     ->name('reportShowHotel');
@@ -43,7 +43,7 @@ Route::get('report/hotel/avgPriceByHotelType', [HotelController::class, 'avarage
     ->name('reportAvarageHotelRooms');
 
 Route::view('dashboard', 'dashboard')
-    ->name('dashboard')->middleware('auth');
+    ->name('dashboard')->middleware(['auth', 'role:owner,employee']);
 
 Route::view('ajaxExample', 'hotel.ajax')
     ->name('ajaxExample');

@@ -40,6 +40,14 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="address" class="col-md-4 col-form-label text-md-end">Address</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" name="address">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -59,6 +67,7 @@
                                 <select id="role" type="text" class="form-control" name="role" >
                                 <option value="employee">Employee</option>
                                 <option value="owner">Owner</option>
+                                <option value="customer">Customer</option>
                                 </select>
                             </div>
                         </div>
