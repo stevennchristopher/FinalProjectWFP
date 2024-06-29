@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Customer;
+use App\Models\Membership;
+use App\Models\Hotel;
 
 class CustomerController extends Controller
 {
@@ -118,4 +120,49 @@ class CustomerController extends Controller
             ),200);
         }
     }
+
+    public function poinMembershipTerbanyak()
+    {
+        $data = Membership::join('customers as c', 'memberships.customer_id', '=', 'c.id')
+        ->select('c.id', 'c.name as namamember', 'memberships.point as point')
+        ->groupBy('c.id', 'c.name', 'memberships.point')
+        ->orderByDesc('memberships.point')
+        ->limit(1)
+        ->get();
+
+        //dd($data);
+
+        return view('laporan.poinmembershipterbanyak', compact('data'));
+    }
+
+    public function hotelReservasiTerbanyak()
+{
+    $data = Hotel::select('hotels.id', 'hotels.name as namahotel', DB::raw('SUM(product_transaction.quantity) as jumlahreservasi'))
+        ->join('products', 'hotels.id', '=', 'products.hotel_id')
+        ->join('product_transaction', 'products.id', '=', 'product_transaction.product_id')
+        ->groupBy('hotels.id', 'hotels.name')
+        ->orderByDesc(DB::raw('SUM(product_transaction.quantity)'))
+        ->limit(1)
+        ->get();
+
+    //dd($data);
+
+    return view('laporan.hotelreservasiterbanyak', compact('data'));
+}
+
+
+public function pelangganPembelianTerbanyak()
+{
+    $data = Customer::join('transactions', 'customers.id', '=', 'transactions.customer_id')
+            ->select('customers.id', 'customers.name as namapelanggan', DB::raw('COUNT(transactions.id) as jumlahpembelian'))
+            ->groupBy('customers.id', 'customers.name')
+            ->orderByDesc(DB::raw('COUNT(transactions.id)'))
+            ->limit(1)
+            ->get();
+
+    //dd($data);
+
+    return view('laporan.pelangganpembelianterbanyak', compact('data'));
+}
+
 }

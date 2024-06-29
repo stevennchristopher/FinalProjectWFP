@@ -112,3 +112,12 @@ Route::middleware(['auth'])->group(function(){
     Route::post('laralux/cart/reduceQty', [FrontEndController::class, 'reduceQuantity'])->name('redQty');
     Route::get('laralux/cart/checkout',[FrontEndController::class,'checkout'])->name('checkout');
 });
+
+Route::get('laporan/poinmembershipterbanyak', [CustomerController::class, 'poinMembershipTerbanyak'])
+    ->name('laporanpoinmembershipterbanyak');
+Route::get('laporan/pelangganpembelianterbanyak', [CustomerController::class, 'pelangganpembelianterbanyak'])
+    ->name('laporanpelangganpembelianterbanyak');
+Route::get('laporan/hotelreservasiterbanyak', [CustomerController::class, 'hotelreservasiterbanyak'])
+    ->name('laporanhotelreservasiterbanyak');
+Route::view('laporan', 'laporan.index')
+    ->name('indexlaporan');

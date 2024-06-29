@@ -536,6 +536,14 @@
                     <span class="selected"></span>
                     </a>
                 </li>
+
+				<li class="start active ">
+                    <a href="{{ route('indexlaporan') }}">
+                    <i class="icon-star"></i>
+                    <span class="title">Report</span>
+                    <span class="selected"></span>
+                    </a>
+                </li>
 			</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>
