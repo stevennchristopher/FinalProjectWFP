@@ -86,7 +86,7 @@ class FrontEndController extends Controller
         }
         session()->put('cart',$cart);
 
-        return redirect()->back()->with("status","Produk Telah ditambahkan ke Cart");
+        return redirect()->back()->with("status","Produk berhasil ditambahkan ke Cart");
     }
 
     public function addQuantity(Request $request)
@@ -100,12 +100,13 @@ class FrontEndController extends Controller
             $jumlahAwal = $cart[$id]['quantity'];
             $jumlahPesan = $jumlahAwal+1;
 
-            if($jumlahPesan < $product->available_room)
+            if($jumlahPesan <= $product->available_room)
             {
                 $cart[$id]['quantity']++;
             }
-            else{
-                return redirect()->back()->with('error', 'Jumlah pemesanan melebihi total kamar yang tersedia');
+            else if ($jumlahPesan > $product->available_room)
+            {
+                return redirect()->back()->with("error","Jumlah pemesanan melebihi total kamar yang tersedia");
             }
         }
 
@@ -145,7 +146,7 @@ class FrontEndController extends Controller
         session()->forget('cart');
         session()->put('cart',$cart);
 
-        return redirect()->back()->with("status", "Produk Telah dibuang dari Cart");
+        return redirect()->back()->with("status", "Produk berhasil dibuang dari Cart");
     }
 
     public function checkout()
