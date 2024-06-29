@@ -29,7 +29,6 @@
         <br><br>
 
         <div id="productContainer">
-            <label>Product of Transaction</label><br>
             <div class="form-group">
                 <label for="product_id">Product</label>
                 <select name="transaction_product[]" class="form-control">
@@ -37,50 +36,52 @@
                         <option value="{{$data->id}}">{{$data->name}} from {{$data->hotels->name}} (Type: {{$data->tipeproduks->nama}})</option>
                     @endforeach
                 </select>
+                <small class="form-text text-muted">Please choose the product of the transaction here.</small>
             </div>
             <div class="form-group">
                 <label for="quantity">Quantity</label>
-                <input type="number" name="transaction_product_quantity[]" class="form-control">
+                <input type="number" name="transaction_product_quantity[]" class="form-control" placeholder="Enter quantity">
+                <small class="form-text text-muted">Please fill the quantity of product here.</small>
             </div>
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label for="price">Price</label>
-                <input type="text" name="transaction_product_subtotal[]" class="form-control">
-            </div> --}}
+                <input type="text" name="transaction_product_subtotal[]" class="form-control" placeholder="Enter price">
+                <small class="form-text text-muted">Please fill the price of product here.</small>
+            </div>
+            -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         </div>
-
-        {{-- <label>Product of Transaction</label><br>
-        <select name="transaction_product">
-            @foreach ($dataProduct as $data)
-                <option value="{{$data->id}}">{{$data->type}} - {{$data->hotels->name}}</option>
-            @endforeach
-        </select><br>
-        <input type="number" name="transaction_product_quantity" class="form-control" placeholder="Enter quantity">
-        <input type="number" name="transaction_product_subtotal" class="form-control" placeholder="Enter subtotal">
-        <small class="form-text text-muted">Please choose and fill the product of the transaction here.</small> --}}
     </div>
     <button type="button" id="addProduct" class="btn btn-secondary">Add Another Product</button>
     <button type="submit" class="btn btn-primary">Submit</button>
 
-    <a href="{{url()->previous()}}" class="btn btn-danger"><- Back</a>
+    <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
 </form>
 
 <script>
 document.getElementById('addProduct').addEventListener('click', function() {
     let productSection = document.createElement('div');
     productSection.innerHTML = `
-    <br><br>
+    <br>
         <div class="form-group">
             <label for="product_id">Product</label>
             <select name="transaction_product[]" class="form-control">
                 @foreach ($dataProduct as $data)
-                    <option value="{{$data->id}}">{{$data->type}}</option>
+                    <option value="{{$data->id}}">{{$data->name}} from {{$data->hotels->name}} (Type: {{$data->tipeproduks->nama}})</option>
                 @endforeach
             </select>
+            <small class="form-text text-muted">Please choose the product of the transaction here.</small>
         </div>
         <div class="form-group">
             <label for="quantity">Quantity</label>
-            <input type="number" name="transaction_product_quantity[]" class="form-control">
+            <input type="number" name="transaction_product_quantity[]" class="form-control" placeholder="Enter quantity">
+            <small class="form-text text-muted">Please fill the quantity of product here.</small>
         </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" name="transaction_product_subtotal[]" class="form-control" placeholder="Enter price">
+            <small class="form-text text-muted">Please fill the price of product here.</small>
+        </div>
+        -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     `;
     document.getElementById('productContainer').appendChild(productSection);
 });

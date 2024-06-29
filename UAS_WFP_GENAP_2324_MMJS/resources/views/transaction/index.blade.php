@@ -60,9 +60,7 @@ Transaction
                     </div>
                 </td>
                 <td>
-                    <a class="btn btn-warning" href="{{ route('transaction.edit', $d->id)}}">Edit</a>
-                    <a href="#modalEditA" class="btn btn-warning" data-toggle="modal" onclick="getEditForm({{$d->id}})">Edit Transaction A</a>
-                    <!-- <a href="#" value="DeleteNoReload" class="btn btn-danger" onclick="if(confirm('Are you sure to delete {{$d->id}} - {{$d->transaction_date}} ? ')) deleteDataRemoveTR({{$d->id}})">Delete without Reload</a> -->
+                    <a class="btn btn-warning" href="{{ route('transaction.edit', $d->id)}}">Edit</a><br><br>
                     @can('delete-permission', Auth::user())
                     <form method="POST" action="{{route('transaction.destroy', $d->id)}}">
                         @csrf

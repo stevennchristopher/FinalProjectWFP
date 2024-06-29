@@ -122,6 +122,11 @@ class FrontEndController extends Controller
             if($cart[$id]['quantity'] > 0)
             {
                 $cart[$id]['quantity']--;
+
+                if($cart[$id]['quantity'] === 0)
+                {
+                    unset($cart[$id]);
+                }
             }
         }
 
@@ -134,7 +139,7 @@ class FrontEndController extends Controller
         $cart = session()->get('cart');
         if(isset($cart[$id]))
         {
-        unset($cart[$id]);
+            unset($cart[$id]);
         }
 
         session()->forget('cart');
