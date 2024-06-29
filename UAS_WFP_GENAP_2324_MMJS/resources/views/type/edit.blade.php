@@ -29,8 +29,7 @@
         <input type="text" class="form-control" id="input_desc" name="type_desc" placeholder="Enter desc" value="{{ $data->description }}">
         <small class="form-text text-muted">Please write down the new desc of type here.</small>
     </div>
+    <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
     <button type="submit" class="btn btn-primary">Update</button>
-
-    <a href="{{url()->previous()}}" class="btn btn-danger"><- Back</a>
 </form>
 @endsection

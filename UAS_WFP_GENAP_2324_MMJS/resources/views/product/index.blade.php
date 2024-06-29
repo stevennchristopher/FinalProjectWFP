@@ -38,7 +38,7 @@
 
     <a href="{{ route('product.create') }}" class="btn btn-success">+ New Product</a>
 
-    <a href="#modalCreate" data-toggle="modal" class="btn btn-info">+ New Product(with Modals)</a>
+    {{-- <a href="#modalCreate" data-toggle="modal" class="btn btn-info">+ New Product(with Modals)</a> --}}
 
     <div class="container">
         <br>
@@ -62,7 +62,6 @@
                             @method('DELETE')
                             <input type="submit" value="Delete" class="btn btn-danger m-3" onclick="return confirm('Are you sure to delete {{$data->id}} - {{$data->type}} ? ');">
                         </form>
-
                     </div>
                 {{-- <img style="height: 190px" src="{{ asset('images/product/'.$data->image) }}.jpg" class="card-img-top"> --}}
 
@@ -125,7 +124,7 @@
 
                     <br><br>
 
-                    <label>Avaialble Room of Product</label>
+                    <label>Available Room of Product</label>
                     <input type="number" class="form-control" name="product_roomNum" placeholder="Enter Number of Room">
                     <small class="form-text text-muted">Please write down the number room of product here.</small>
                 </div>

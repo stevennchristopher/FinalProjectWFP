@@ -30,7 +30,7 @@ Transaction
     @can('delete-permission', Auth::user())
     <a href="{{ route('transaction.create') }}" class="btn btn-success">+ New Transaction</a>
 
-    <a href="#modalCreate" data-toggle="modal" class="btn btn-info">+ New Transaction(with Modals)</a>
+    {{-- <a href="#modalCreate" data-toggle="modal" class="btn btn-info">+ New Transaction(with Modals)</a> --}}
     @endcan
     <table class="table" >
         <thead>

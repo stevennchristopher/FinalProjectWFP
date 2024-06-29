@@ -45,16 +45,15 @@
             </div>
             <div class="form-group">
                 <label for="price">Price</label>
-                <input type="text" name="transaction_product_subtotal[]" class="form-control" placeholder="Enter price">
+                <input type="number" name="transaction_product_subtotal[]" class="form-control" placeholder="Enter price">
                 <small class="form-text text-muted">Please fill the price of product here.</small>
             </div>
             -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         </div>
     </div>
-    <button type="button" id="addProduct" class="btn btn-secondary">Add Another Product</button>
-    <button type="submit" class="btn btn-primary">Submit</button>
-
     <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" id="addProduct" class="btn btn-info">Add Another Product</button>
 </form>
 
 <script>
@@ -78,7 +77,7 @@ document.getElementById('addProduct').addEventListener('click', function() {
         </div>
         <div class="form-group">
             <label for="price">Price</label>
-            <input type="text" name="transaction_product_subtotal[]" class="form-control" placeholder="Enter price">
+            <input type="number" name="transaction_product_subtotal[]" class="form-control" placeholder="Enter price">
             <small class="form-text text-muted">Please fill the price of product here.</small>
         </div>
         -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

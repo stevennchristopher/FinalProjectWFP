@@ -40,7 +40,7 @@ Edit Membership
         <label for="point">Point</label>
         <input type="number" name="membership_point" class="form-control" id="point"  placeholder="Enter your Point" value="{{$data->point}}">
     </div>
-    <a class="btn btn-info" href="{{url()->previous()}}">Cancel</a>
+    <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 @endsection

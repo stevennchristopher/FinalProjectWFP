@@ -38,8 +38,7 @@
         </select><br>
         <small class="form-text text-muted">Please choose the hotel of product here.</small>
     </div>
+    <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
     <button type="submit" class="btn btn-primary">Submit</button>
-
-    <a href="{{url()->previous()}}" class="btn btn-danger"><- Back</a>
 </form>
 @endsection

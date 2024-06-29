@@ -29,7 +29,7 @@ Type
 
     <a href="{{ route('type.create') }}" class="btn btn-success">+ New Type</a>
 
-    <a href="#modalCreate" data-toggle="modal" class="btn btn-info">+ New Type(with Modals)</a>
+    {{-- <a href="#modalCreate" data-toggle="modal" class="btn btn-info">+ New Type(with Modals)</a> --}}
 
     <table class="table" >
         <thead>
@@ -49,11 +49,11 @@ Type
                 <td id="td_description_{{$d->id}}">{{ $d->description }}</td>
                 {{-- <td>{{ $d->deleted_at }}</td> --}}
                 <td>
-                    <a class="btn btn-warning" href="{{ route('type.edit', $d->id)}}">Edit</a>
+                    <a class="btn btn-warning" href="{{ route('type.edit', $d->id)}}">Edit</a><br><br>
 
-                    <a href="#modalEditA" class="btn btn-warning" data-toggle="modal" onclick="getEditForm({{$d->id}})">Edit Type A</a>
+                    {{-- <a href="#modalEditA" class="btn btn-warning" data-toggle="modal" onclick="getEditForm({{$d->id}})">Edit Type A</a> --}}
 
-                    <a href="#modalEditB" class="btn btn-info" data-toggle="modal" onclick="getEditFormB({{$d->id}})">Edit Type B</a>
+                    {{-- <a href="#modalEditB" class="btn btn-info" data-toggle="modal" onclick="getEditFormB({{$d->id}})">Edit Type B</a> --}}
 
                     @can('delete-permission', Auth::user())
                     <form method="POST" action="{{route('type.destroy', $d->id)}}">

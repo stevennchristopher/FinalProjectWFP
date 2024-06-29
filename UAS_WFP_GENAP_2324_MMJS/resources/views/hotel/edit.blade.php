@@ -40,7 +40,7 @@
         </select>
     </div>
 
-    <a class="btn btn-info" href="{{ url()->previous() }}">Cancel</a>
+    <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 @endsection

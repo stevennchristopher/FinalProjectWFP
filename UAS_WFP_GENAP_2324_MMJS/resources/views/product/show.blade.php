@@ -12,7 +12,7 @@
 <br>
 
 @section('content')
-<center><h1 class="display-1">Pilihan product:</h1></center>
+<center><h1 class="display-1">Detail product:</h1></center>
 <br>
 <div class="container text-center">
     <div class="row">
@@ -33,7 +33,7 @@
                     <br>
                 @endforeach
             @endif
-            <a href="{{url()->previous()}}" class="btn btn-danger"><- Back</a>
+            <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
             </div>
         </div>
     </div>

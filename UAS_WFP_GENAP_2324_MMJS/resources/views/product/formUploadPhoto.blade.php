@@ -10,6 +10,7 @@
             <input type="file" class="form-control" name="file_photo"/>
             <input type="hidden" name='product_id' value="{{$product->id}}"/>
         </div>
+        <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

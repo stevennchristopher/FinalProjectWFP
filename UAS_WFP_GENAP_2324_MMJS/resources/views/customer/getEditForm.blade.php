@@ -12,7 +12,6 @@
         <input type="text" class="form-control" id="input_address" name="customer_address" placeholder="Enter address" value="{{$data->address}}">
         <small class="form-text text-muted">Please write down the new address of customer here.</small>
     </div>
+    <a href="{{url()->previous()}}" class="btn btn-danger">Cancel</a>
     <button type="submit" class="btn btn-primary">Update</button>
-
-    <a href="{{url()->previous()}}" class="btn btn-danger"><- Back</a>
 </form>

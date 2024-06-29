@@ -10,6 +10,7 @@
             <input type="file" class="form-control" name="file_logo"/>
             <input type="hidden" name='hotel_id' value="{{$hotel->id}}"/>
         </div>
+        <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

@@ -37,8 +37,7 @@
         <input type="datetime-local" name="transaction_date" class="form-control" placeholder="Enter date" value="{{$data->transaction_date}}">
         <small class="form-text text-muted">Please choose the new date of the transaction here.</small>
     </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-
     <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
+    <button type="submit" class="btn btn-primary">Update</button>
 </form>
 @endsection

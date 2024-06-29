@@ -23,12 +23,12 @@
                     <option value="{{$d->id}}">{{$d->name}}</option>
                 @endif
             @endforeach
-        </select><br>
+        </select>
         <small class="form-text text-muted">Please choose the new hotel of product here.</small>
 
         <br><br>
 
-        <label>Avaialble Room of Product</label>
+        <label>Available Room of Product</label>
         <input type="number" class="form-control" name="product_roomNum" placeholder="Enter Number of Room" value="{{$data->available_room}}">
         <small class="form-text text-muted">Please write down the new number room of product here.</small>
         <br><br>
@@ -43,7 +43,6 @@
             @endforeach
         </select><br>
     </div>
+    <a href="{{url()->previous()}}" class="btn btn-danger">Cancel</a>
     <button type="submit" class="btn btn-primary">Update</button>
-
-    <a href="{{url()->previous()}}" class="btn btn-danger"><- Back</a>
 </form>

@@ -69,8 +69,7 @@
 
         <br><br>
     </div>
+    <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
     <button type="submit" class="btn btn-primary">Update</button>
-
-    <a href="{{url()->previous()}}" class="btn btn-danger"><- Back</a>
 </form>
 @endsection

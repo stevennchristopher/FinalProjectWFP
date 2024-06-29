@@ -28,8 +28,8 @@
         <input type="text" class="form-control" id="input_desc" name="type_desc" placeholder="Enter desc">
         <small class="form-text text-muted">Please write down the desc of type here.</small>
     </div>
+    <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
     <button type="submit" class="btn btn-primary">Submit</button>
     {{-- <a href="{{ route('type.index') }}" class="btn btn-danger"><- Back</a> --}}
-    <a href="{{url()->previous()}}" class="btn btn-danger"><- Back</a>
 </form>
 @endsection

@@ -34,12 +34,12 @@
             @foreach ($dataHotel as $data)
                 <option value="{{$data->id}}">{{$data->name}}</option>
             @endforeach
-        </select><br>
+        </select>
         <small class="form-text text-muted">Please choose the hotel of product here.</small>
 
         <br><br>
 
-        <label>Avaialble Room of Product</label>
+        <label>Available Room of Product</label>
         <input type="number" class="form-control" name="product_roomNum" placeholder="Enter Number of Room">
         <small class="form-text text-muted">Please write down the number room of product here.</small>
     </div>
@@ -51,8 +51,8 @@
         @endforeach
 </select>
     </div>
+    <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
     <button type="submit" class="btn btn-primary">Submit</button>
     {{-- <a href="{{ route('type.index') }}" class="btn btn-danger"><- Back</a> --}}
-    <a href="{{url()->previous()}}" class="btn btn-danger"><- Back</a>
 </form>
 @endsection
