@@ -93,8 +93,8 @@
                                         @php
                                                 $tax = $subtotal * 11/100;
                                                 $total = $subtotal + $tax;
-                                                $user = Auth::user()->id;
-                                                $points_remaining = {{$customer->memberships->point}};
+                                                // $user = Auth::user()->id;
+                                                $points_remaining = $customer->memberships->point;
                                         @endphp
                                         <h2>Tax 11%<span>{{'IDR '.$tax}}</span></h2>
                                         <h2>Grand Total<span>{{'IDR '.$total}}</span></h2><br>

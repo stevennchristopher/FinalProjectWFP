@@ -101,9 +101,7 @@ Route::get('/laralux/{laralux}', [FrontEndController::class, 'show'])->name('lar
 
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('laralux/user/cart', function(){
-        return view('frontend.cart');
-    })->name('cart');
+    Route::get('laralux/user/cart', [FrontEndController::class, 'cart'])->name('cart');
 
     Route::get('laralux/cart/add/{id}', [FrontEndController::class, 'addToCart'])->name('addCart');
     Route::get('laralux/cart/delete/{id}', [FrontEndController::class, 'deleteFromCart'])->name('delFromCart');
