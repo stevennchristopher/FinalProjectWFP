@@ -52,8 +52,10 @@ class FrontEndController extends Controller
 
     public function cart()
     {
-        $customer = Auth::user();
-        return view('frontend.cart', compact('customer'));
+        $user = Auth::user();
+        $user_id = $user->id;
+        $points_remaining = Membership::where('customer_id', $user_id)->value('point');
+        return view('frontend.cart', compact('points_remaining'));
     }
 
 
