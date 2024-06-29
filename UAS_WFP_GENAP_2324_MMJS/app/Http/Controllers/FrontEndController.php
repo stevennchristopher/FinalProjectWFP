@@ -52,7 +52,8 @@ class FrontEndController extends Controller
 
     public function cart()
     {
-        return view('frontend.cart');
+        $customer = Auth::user();
+        return view('frontend.cart', compact('customer'));
     }
 
 
