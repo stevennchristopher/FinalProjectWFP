@@ -152,7 +152,7 @@ class FrontEndController extends Controller
     public function checkout()
     {
         $cart = session('cart');
-        $customer = Auth::customer();
+        $customer = Auth::user();
 
         //checokout ini kan ngambil id customer, nah tp authnya kan punyanya user, harus dicari tau untuk ngehubunginnya buat ndapetin id customer
 
@@ -162,7 +162,7 @@ class FrontEndController extends Controller
         $t->save();
 
         //insert into junction table product_transaction using eloquent
-        $t->insertProducts($cart, $customer);
+        $t->insertProducts($cart);
 
         session()->forget('cart');
         return redirect()->route('laralux.index')->with('status','Checkout berhasil');

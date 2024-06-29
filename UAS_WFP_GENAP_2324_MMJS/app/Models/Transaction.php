@@ -21,4 +21,15 @@ class Transaction extends Model
     {
         return $this->belongsToMany(Product::class, 'product_transaction', 'transaction_id', 'product_id')->withPivot('quantity','subtotal');
     }
+
+    public function insertProducts($cart)
+    {
+        foreach ($cart as $item) {
+            $subtotal = $item['price'] * $item['quantity'];
+            $this->products()->attach($item['id'], [
+                'quantity' => $item['quantity'],
+                'subtotal' => $subtotal
+            ]);
+        }
+    }
 }

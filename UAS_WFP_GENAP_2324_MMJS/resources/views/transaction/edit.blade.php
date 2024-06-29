@@ -39,6 +39,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Update</button>
 
-    <a href="{{url()->previous()}}" class="btn btn-danger"><- Back</a>
+    <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
 </form>
 @endsection
