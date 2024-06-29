@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Transaction;
+use App\Models\Membership;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -166,6 +167,23 @@ class FrontEndController extends Controller
 
         session()->forget('cart');
         return redirect()->route('laralux.index')->with('status','Checkout berhasil');
+
+    }
+    public function updatePoints($id, $cart)
+    {
+        $id = Membership::find($id);
+        $points = 0;
+
+        foreach ($cart as $item) {
+            if (in_array($item['type'], ['deluxe', 'superior', 'suite'])) {
+                $points += 5 * $item['quantity'];
+            } else {
+                $points += floor(($item['quantity'] * $item['price']) / 300000);
+            }
+        }
+
+        $membership->point += $point;
+        $membership->save();
 
     }
 }

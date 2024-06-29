@@ -89,4 +89,6 @@ class MembershipController extends Controller
             return redirect()->route('membership.index')->with('error', $msg);
         }
     }
+
+    
 }

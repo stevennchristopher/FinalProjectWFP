@@ -93,10 +93,18 @@
                                         @php
                                                 $tax = $subtotal * 11/100;
                                                 $total = $subtotal + $tax;
+                                                $user = Auth::user()->id;
+                                                $points_remaining = 0;
                                         @endphp
                                         <h2>Tax 11%<span>{{'IDR '.$tax}}</span></h2>
-                                        <h2>Grand Total<span>{{'IDR '.$total}}</span></h2>
+                                        <h2>Grand Total<span>{{'IDR '.$total}}</span></h2><br>
+                                        <h2>Available Points: <span>{{$points_remaining.' points'}}</span></h2>
+                                        <div class="coupon">
+                                <input type="text" id="points" placeholder="Enter points to redeem">
+                                <button>Redeem Points</button>
+                            </div>
                                     </div>
+                                    
                                     <div class="cart-btn">
                                         <a class="btn btn-xs" href="{{ route('laralux.index') }}">Continue Shopping</button>
                                         <a class="btn btn-xs" href="{{ route('checkout') }}">Checkout</a>
