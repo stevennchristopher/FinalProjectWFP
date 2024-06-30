@@ -109,6 +109,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('laralux/cart/addQty', [FrontEndController::class, 'addQuantity'])->name('addQty');
     Route::post('laralux/cart/reduceQty', [FrontEndController::class, 'reduceQuantity'])->name('redQty');
     Route::get('laralux/cart/checkout',[FrontEndController::class,'checkout'])->name('checkout');
+   
 });
 
 Route::get('laporan/poinmembershipterbanyak', [CustomerController::class, 'poinMembershipTerbanyak'])

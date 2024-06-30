@@ -79,7 +79,7 @@ class FrontEndController extends Controller
         {
             $cart[$id] = [
             'id' => $id,
-            'name' => $product->type,
+            'name' => $product->name,
             'quantity' => 1,
             'price' => $product->price,
             'photo[]' => $filenames,
@@ -167,6 +167,8 @@ class FrontEndController extends Controller
 
         //insert into junction table product_transaction using eloquent
         $t->insertProducts($cart);
+        $this->updatePoints($customer->id, $cart);
+        $this->redeemPoints();
 
         session()->forget('cart');
         return redirect()->route('laralux.index')->with('status','Checkout berhasil');
@@ -174,19 +176,30 @@ class FrontEndController extends Controller
     }
     public function updatePoints($id, $cart)
     {
-        $id = Membership::find($id);
-        $points = 0;
+        $membership = Membership::find($id);
+        if (!$membership) {
+            throw new Exception("Membership tidak ditemukan. Silakan buat member terlebih dahulu.");
+        }
+        $addpoints = 0;
+        $totalsisanya = 0;
 
         foreach ($cart as $item) {
-            if (in_array($item['type'], ['deluxe', 'superior', 'suite'])) {
-                $points += 5 * $item['quantity'];
+            $product = null;
+            $product = Product::find($item['id']);
+            if (in_array($product['tipeproduk_id'], ['2', '5', '6'])) {
+                $addpoints += 5 * $item['quantity'];
             } else {
-                $points += floor(($item['quantity'] * $item['price']) / 300000);
+                $totalsisanya += $item['quantity'] * $item['price'];
             }
         }
+        $addpoints += floor($totalsisanya / 300000);
 
-        $membership->point += $point;
+        $membership->point += $addpoints;
         $membership->save();
 
+    }
+
+    public function redeemPoints($cart)
+    {
     }
 }

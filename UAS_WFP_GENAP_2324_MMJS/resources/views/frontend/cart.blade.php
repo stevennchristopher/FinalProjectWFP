@@ -80,30 +80,32 @@
                     <div class="cart-page-inner">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="coupon">
-                                    <input type="text" placeholder="Coupon Code">
-                                    <button>Apply Code</button>
-                                </div>
+                            <h2 style="font-size:20px">Available Points <span>{{$points_remaining}}</span></h2>
+                                        <div class="coupon">
+                                                <input type="number" name="points" id="points_to_redeem" placeholder="Enter points" min="0">
+
+                                                <button type="button" onclick="calculateRedeemAmount()">Redeem Points</button>
+                                        </div>
+                               
                             </div>
                             <div class="col-md-12">
                                 <div class="cart-summary">
                                     <div class="cart-content">
+                                   
                                         <h1>Cart Summary</h1>
-                                        <h2>Subtotal<span>{{'IDR '.$subtotal}}</span></h2>
+                                        <h2  style="font-size:18px">Subtotal<span>{{'IDR '. number_format($subtotal, 0, ',')}}</span></h2>
                                         @php
                                                 $tax = $subtotal * 11/100;
-                                                $total = $subtotal + $tax;
-                                                // $user = Auth::user()->id;
+                                                $grandtotal = $subtotal + $tax;
                                                 
                                         @endphp
-                                        <h2>Tax 11%<span>{{'IDR '.$tax}}</span></h2>
-                                        <h2>Grand Total<span>{{'IDR '.$total}}</span></h2><br>
-                                        <h2>Available Points: <span>{{$points_remaining.' points'}}</span></h2>
-                                        <div class="coupon">
-                                <input type="text" id="points" placeholder="Enter points to redeem">
-                                <button>Redeem Points</button>
-                            </div>
-                                    </div>
+                                        <h2 id="redeem_amount" style="font-size: 18px; display: none;">Diskon Poin<span></span></h2><br>
+                                        <h2  style="font-size:18px" id="tax">Tax 11%<span>{{'IDR '.number_format($tax, 0, ',')}}</span></h2>
+                                        <h2  style="font-size:18px" id="grandtotal">Grand Total<span>{{'IDR '.number_format($grandtotal, 0, ',')}}</span></h2><br>
+                                       
+
+                                </div>
+                                
 
                                     <div class="cart-btn">
                                         <a class="btn btn-xs" href="{{ route('laralux.index') }}">Continue Shopping</button>
@@ -150,5 +152,44 @@
         }
         });
     }
+
+
+    function calculateRedeemAmount() {
+            var points_to_redeem = document.getElementById('points_to_redeem').value;
+            var subtotal = {{$subtotal}};
+            var points_remaining = {{$points_remaining}};
+
+            var points_remaining = {{$points_remaining}};
+
+            if (subtotal < 100000) {
+                alert('Belanja sebelum tax minimal IDR 100.000');
+                return;
+            }
+
+            else if (points_to_redeem > points_remaining ) {
+                alert('Jumlah poin yang ingin diredeem melebihi jumlah poin yang dimiliki.');
+                return;
+            }
+            else if (points_to_redeem*100000 > subtotal ) {
+                alert('Jumlah poin yang ingin diredeem melebihi jumlah belanja.');
+                return;
+            }
+
+
+            var redeem_amount = points_to_redeem * 100000; 
+            var tax = (subtotal)*11/100;
+            var total_after_redeem = subtotal - redeem_amount + tax; 
+
+            var redeemAmountElement = document.getElementById('redeem_amount');
+            redeemAmountElement.style.display = 'block';
+
+            document.getElementById('redeem_amount').getElementsByTagName('span')[0].textContent = 'IDR ' + redeem_amount.toLocaleString();
+            document.getElementById('grandtotal').getElementsByTagName('span')[0].textContent = 'IDR ' + total_after_redeem.toLocaleString();
+            document.getElementById('tax').getElementsByTagName('span')[0].textContent = 'IDR ' + tax.toLocaleString();
+
+
+        }
+
+    
     </script>
 @endsection
