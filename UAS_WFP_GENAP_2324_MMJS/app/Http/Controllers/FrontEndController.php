@@ -163,7 +163,8 @@ class FrontEndController extends Controller
         }
     
         $customer = Auth::user();
-        $redeemedpoints = $request->input('points');
+        $requestData = $request->all();
+
 
         //checokout ini kan ngambil id customer, nah tp authnya kan punyanya user, harus dicari tau untuk ngehubunginnya buat ndapetin id customer
 
@@ -175,6 +176,8 @@ class FrontEndController extends Controller
         //insert into junction table product_transaction using eloquent
         $t->insertProducts($cart);
         $this->updatePoints($customer->id, $cart);
+
+        $redeemedpoints = isset($requestData['points']) ? intval($requestData['points']) : 0;
         if ($redeemedpoints > 0) {
             $this->redeemPoints($redeemedpoints, $customer->id);
         }

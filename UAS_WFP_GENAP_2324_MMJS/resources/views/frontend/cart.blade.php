@@ -82,7 +82,7 @@
                             <div class="col-md-12">
                             <h2 style="font-size:20px">Available Points <span>{{$points_remaining}}</span></h2>
                                         <div class="coupon">
-                                                <input type="number" name="points" id="points_to_redeem" placeholder="Enter points" min="0" max="{{$points_remaining}}">
+                                                <input type="number" name="point" id="points_to_redeem" placeholder="Enter points" min="0" max="{{$points_remaining}}">
 
                                                 <button type="button" onclick="calculateRedeemAmount()">Redeem Points</button>
                                         </div>
@@ -108,8 +108,11 @@
                                 
 
                                     <div class="cart-btn">
-                                        <a class="btn btn-xs" href="{{ route('laralux.index') }}">Continue Shopping</button>
-                                        <a class="btn btn-xs" href="{{ route('checkout') }}" id="checkoutbtn">Checkout</a>
+                                        <form id="checkoutForm" action="{{ route('checkout') }}" method="GET">
+                                        <input type="hidden" name="points" id="hidden_points" value="">
+                                        <a class="btn btn-xs" href="{{ route('laralux.index') }}">Continue Shopping</a>
+                                        <button type="submit" id="checkoutbtn">Checkout</button>
+                                        </form>    
                                     </div>
                                 </div>
                             </div>
@@ -187,6 +190,10 @@
             document.getElementById('grandtotal').getElementsByTagName('span')[0].textContent = 'IDR ' + total_after_redeem.toLocaleString();
             document.getElementById('tax').getElementsByTagName('span')[0].textContent = 'IDR ' + tax.toLocaleString();
         }
+            document.getElementById('checkoutbtn').addEventListener('click', function(event) {
+            var points_to_redeem = document.getElementById('points_to_redeem').value;
+            document.getElementById('hidden_points').value = points_to_redeem;
+        });
 
     
     </script>
