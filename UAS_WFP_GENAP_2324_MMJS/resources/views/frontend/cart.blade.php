@@ -82,7 +82,7 @@
                             <div class="col-md-12">
                             <h2 style="font-size:20px">Available Points <span>{{$points_remaining}}</span></h2>
                                         <div class="coupon">
-                                                <input type="number" name="points" id="points_to_redeem" placeholder="Enter points" min="0">
+                                                <input type="number" name="points" id="points_to_redeem" placeholder="Enter points" min="0" max="{{$points_remaining}}">
 
                                                 <button type="button" onclick="calculateRedeemAmount()">Redeem Points</button>
                                         </div>
@@ -109,7 +109,7 @@
 
                                     <div class="cart-btn">
                                         <a class="btn btn-xs" href="{{ route('laralux.index') }}">Continue Shopping</button>
-                                        <a class="btn btn-xs" href="{{ route('checkout') }}">Checkout</a>
+                                        <a class="btn btn-xs" href="{{ route('checkout') }}" id="checkoutbtn">Checkout</a>
                                     </div>
                                 </div>
                             </div>
@@ -167,11 +167,11 @@
             }
 
             else if (points_to_redeem > points_remaining ) {
-                alert('Jumlah poin yang ingin diredeem melebihi jumlah poin yang dimiliki.');
+                alert('Jumlah poin yang ingin di redeem melebihi jumlah poin yang dimiliki.');
                 return;
             }
             else if (points_to_redeem*100000 > subtotal ) {
-                alert('Jumlah poin yang ingin diredeem melebihi jumlah belanja.');
+                alert('Jumlah poin yang ingin di redeem melebihi jumlah belanja.');
                 return;
             }
 
@@ -186,8 +186,6 @@
             document.getElementById('redeem_amount').getElementsByTagName('span')[0].textContent = 'IDR ' + redeem_amount.toLocaleString();
             document.getElementById('grandtotal').getElementsByTagName('span')[0].textContent = 'IDR ' + total_after_redeem.toLocaleString();
             document.getElementById('tax').getElementsByTagName('span')[0].textContent = 'IDR ' + tax.toLocaleString();
-
-
         }
 
     

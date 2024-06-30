@@ -38,11 +38,11 @@
                                     @endif
                                 </a>
                                 <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="{{route('addCart',$p->id)}}"><i class="fa fa-cart-plus"></i></a>
                                     <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
+                                    <a href="{{route('laralux.show',$p->id)}}"><i class="fa fa-search"></i></a>
                                 </div>
-                            </div>
+                            </div>  
                             <div class="product-price">
                                 <h3><span>IDR</span>{{$p->price}}</h3>
                                 <a class="btn" href="{{route('addCart',$p->id)}}"><i class="fa fa-shopping-cart"></i>Add To Cart</a>

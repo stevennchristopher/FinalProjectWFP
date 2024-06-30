@@ -8,6 +8,7 @@ use App\Models\Transaction;
 use App\Models\Membership;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Exception;
 
 use Illuminate\Support\Facades\File;
 
@@ -153,10 +154,16 @@ class FrontEndController extends Controller
         return redirect()->back()->with("status", "Produk berhasil dibuang dari Cart");
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
         $cart = session('cart');
+
+        if (empty($cart)) {
+            return redirect()->back()->with('error', 'Cart kosong. Tambahkan produk ke Cart terlebih dahulu untuk checkout.');
+        }
+    
         $customer = Auth::user();
+        $redeemedpoints = $request->input('points');
 
         //checokout ini kan ngambil id customer, nah tp authnya kan punyanya user, harus dicari tau untuk ngehubunginnya buat ndapetin id customer
 
@@ -168,12 +175,14 @@ class FrontEndController extends Controller
         //insert into junction table product_transaction using eloquent
         $t->insertProducts($cart);
         $this->updatePoints($customer->id, $cart);
-        $this->redeemPoints();
+        if ($redeemedpoints > 0) {
+            $this->redeemPoints($redeemedpoints, $customer->id);
+        }
 
         session()->forget('cart');
         return redirect()->route('laralux.index')->with('status','Checkout berhasil');
-
     }
+
     public function updatePoints($id, $cart)
     {
         $membership = Membership::find($id);
@@ -199,7 +208,11 @@ class FrontEndController extends Controller
 
     }
 
-    public function redeemPoints($cart)
+    public function redeemPoints($redeemedpoints, $id)
     {
+        $membership = Membership::find($id);
+        
+        $membership->point -= $redeemedpoints;
+        $membership->save();
     }
 }
