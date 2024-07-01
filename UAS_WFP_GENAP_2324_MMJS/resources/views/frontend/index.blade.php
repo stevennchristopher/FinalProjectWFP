@@ -5,11 +5,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                {{-- @guest
-                aaa
+                @guest
+                <h2 style="font-size:30px">Pilihan Produk: </h2>
                 @else
-                <h2 style="font-size:20px">Available Points: {{$points_remaining}}</h2> --}}
-                {{-- @endguest --}}
+                <h2 style="font-size:20px">Available Points: {{$points_remaining}}</h2>
+                <h2 style="font-size:30px">Pilihan Produk: </h2>
+                @endguest
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-view-top">
