@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Hotel;
 use App\Models\Product;
+use App\Models\TypeProduct;
 use App\Models\Transaction;
 use App\Models\Membership;
 use App\Models\Fasilitas;
@@ -243,5 +245,13 @@ class FrontEndController extends Controller
 
         $membership->point -= $redeemedpoints;
         $membership->save();
+    }
+
+    public function nota(){
+        $dataHotel = Hotel::all();
+        $types = TypeProduct::all();
+
+        $queryModel=Product::all();
+        return view('frontend.nota', compact('queryModel', 'dataHotel','types'));
     }
 }

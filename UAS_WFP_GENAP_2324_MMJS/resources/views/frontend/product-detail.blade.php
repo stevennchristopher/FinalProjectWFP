@@ -9,11 +9,6 @@
                     <div class="row align-items-center">
                         <div class="col-md-5">
                                 <div class="slider-nav-img">
-                                    {{-- @if ($product->image == NULL)
-                                    <img  width="200" src="{{asset('images/blank.jpg')}}">
-                                    @else
-                                    <img  width="200" src="{{asset('images/'.$product->image) }}" alt="Product Image">
-                                    @endif --}}
                                     @if($product->filenames)
                                         @foreach ($product->filenames as $filename)
                                             <img style="height: 190px" src="{{asset('images/prod/'.$product->id.'/'.$filename)}}" class="card-img-top"/><br>

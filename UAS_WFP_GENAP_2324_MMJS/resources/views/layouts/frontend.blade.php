@@ -54,6 +54,7 @@
                         <div class="navbar-nav mr-auto">
                             <a href="{{ route ('laralux.index')}}" class="nav-item nav-link">Home</a>
                             <a href="{{ route ('cart')}}" class="nav-item nav-link">Cart</a>
+                            <a href="{{ route ('laralux.nota')}}" class="nav-item nav-link">Transaction</a>
                         </div>
                         <div class="navbar-nav ml-auto">
                             @guest
