@@ -19,12 +19,17 @@
                                         <div class="card mx-auto" style="width: 20rem">
                                             <div id="tr_{{$data->id}}" class="card-body">
                                                 <center>
-                                                    <h4 class="card-title"><b> Transaction #{{$data->id}}</b></h4>
+                                                    <h4 class="card-title"><b> Transaction #{{$data->transaction_date}}</b></h4>
                                                 </center>
                                                 <br>
-                                                <p class="card-text m-3"><b>Price: </b>${{$data->price}}</p>
-                                                {{-- <p class="card-text m-3"><b>Hotel Name: </b>{{$data->hotels->name}}</p>
-                                                <p class="card-text m-3"><b>Type of Products: </b>{{$data->tipeproduks->nama}}</p> --}}
+                                                @foreach ($details as $p)
+                                                
+                                                @endforeach
+                                                <p class="card-text m-3"><b>Transaction Date: </b>{{$data->transaction_date}}</p>
+                                                <p class="card-text m-3"><b>Total: </b>{{'IDR '.number_format($data->harga_asli, 0, ',')}}</p>
+                                                <p class="card-text m-3"><b>Discount: </b>{{'-IDR '.number_format($data->diskon, 0, ',')}}</p>
+                                                <p class="card-text m-3"><b>Tax (11%): </b>{{'IDR '.number_format($data->ppn, 0, ',')}}</p>
+                                                <h5 class="card-text m-3"><b>Grand Total: {{'IDR '.number_format($data->harga_asli, 0, ',')}}</b></h5>
                                             </div>
                                         </div>
                                     </div>
