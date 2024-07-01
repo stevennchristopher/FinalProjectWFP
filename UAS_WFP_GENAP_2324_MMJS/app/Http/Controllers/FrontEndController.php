@@ -18,32 +18,23 @@ use Illuminate\Support\Facades\File;
 class FrontEndController extends Controller
 {
     public function indexSebelumLogin(){
-        $product = Product::all();
-
-        foreach($product as $r)
-        {
-            $directory = public_path('images/prod/'.$r->id);
-            if(File::exists($directory))
-            {
-                $files = File::files($directory);
-                $filenames = [];
-                foreach ($files as $file) {
-                    $filenames[] = $file->getFilename();
-                }
-                $r['filenames']=$filenames;
-            }
-        }
-
-        return view('frontend.index', compact('product'));
+        $hotel = Hotel::all();
+        return view('frontend.index', compact('hotel'));
     }
 
     public function index(){
-        $product = Product::all();
+        $hotel = Hotel::all();
 
         $user = Auth::user();
         $user_id = $user->id;
         $points_remaining = Membership::where('customer_id', $user_id)->value('point');
 
+        return view('frontend.index', compact('hotel', 'points_remaining'));
+    }
+
+    public function product($id){
+        $product = Product::where('hotel_id', $id)->get();
+
         foreach($product as $r)
         {
             $directory = public_path('images/prod/'.$r->id);
@@ -58,7 +49,7 @@ class FrontEndController extends Controller
             }
         }
 
-        return view('frontend.index', compact('product', 'points_remaining'));
+        return view('frontend.product', compact('product'));
     }
 
     public function show($id){

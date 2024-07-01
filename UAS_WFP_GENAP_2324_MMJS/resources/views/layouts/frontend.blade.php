@@ -52,7 +52,11 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
+                            @guest
+                            <a href="{{ route ('indexSebelumLogin')}}" class="nav-item nav-link">Home</a>
+                            @else
                             <a href="{{ route ('laralux.index')}}" class="nav-item nav-link">Home</a>
+                            @endguest
                             <a href="{{ route ('cart')}}" class="nav-item nav-link">Cart</a>
                             <a href="{{ route ('laralux.nota')}}" class="nav-item nav-link">Transaction</a>
                         </div>

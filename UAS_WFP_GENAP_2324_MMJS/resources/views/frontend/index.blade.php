@@ -6,21 +6,22 @@
         <div class="row">
             <div class="col-lg-12">
                 @guest
-                <h2 style="font-size:30px">Pilihan Produk: </h2>
+                <h2 style="font-size:30px">Pilihan Hotel: </h2>
                 @else
                 <h2 style="font-size:20px">Available Points: {{$points_remaining}}</h2>
-                <h2 style="font-size:30px">Pilihan Produk: </h2>
+                <h2 style="font-size:30px">Pilihan Hotel: </h2>
                 @endguest
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-view-top">
                             <div class="row">
-                    @foreach ($product as $p)
-                    <div class="col-md-3">
+                    @foreach ($hotel as $h)
+                    <div class="col-md-4">
                         <div class="product-item">
                             <div class="product-title">
-                                <a href="{{route('laralux.show',$p->id)}}">{{ $p->name}}</a>
+                                <a href="{{route('laralux.product', $h->id)}}">{{ $h->name}}</a>
                                 <div class="ratting">
+                                    <h3 style="font-size:20px; color: white;">{{$h->rating}}</h3>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -30,23 +31,13 @@
                             </div>
                             <div class="product-image">
                                 <a href="product-detail.html">
-                                    @if($p->filenames)
-                                        @foreach ($p->filenames as $filename)
-                                            <img style="height: 190px" src="{{asset('images/prod/'.$p->id.'/'.$filename)}}" class="card-img-top"/><br>
-                                        @endforeach
-                                    @else
-                                        <img src="{{asset('images/blank.jpg')}}">
-                                    @endif
+                                    <img style="height: 190px" src="{{asset('images/hotel/'.$h->id.'.jpg')}}" class="card-img-top"/><br>
                                 </a>
-                                <div class="product-action">
-                                    <a href="{{route('addCart',$p->id)}}"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="{{route('laralux.show',$p->id)}}"><i class="fa fa-search"></i></a>
-                                </div>
                             </div>
                             <div class="product-price">
-                                <h3><span>IDR</span>{{$p->price}}</h3>
-                                <a class="btn" href="{{route('addCart',$p->id)}}"><i class="fa fa-shopping-cart"></i>Add To Cart</a>
+                                <h3 style="font-size:15px">Address: <span>{{$h->address}}</span></h3><br>
+                                <h3 style="font-size:15px">Phone: <span>{{$h->phone}}</span></h3><br>
+                                <h3 style="font-size:15px">Email: <span>{{$h->email}}</span></h3><br>
                             </div>
                         </div>
                     </div>

@@ -97,7 +97,10 @@ Route::post('product/delPhoto', [ProductController::class, 'delPhoto']);
 
 Route::get('/', [FrontEndController::class, 'indexSebelumLogin'])->name('indexSebelumLogin');
 Route::get('/laralux', [FrontEndController::class, 'index'])->name('laralux.index');
-Route::get('/laralux/{laralux}', [FrontEndController::class, 'show'])->name('laralux.show');
+
+Route::get('/laralux/{product}', [FrontEndController::class, 'product'])->name('laralux.product');
+
+Route::get('/laralux/product/{laralux}', [FrontEndController::class, 'show'])->name('laralux.show');
 
 Route::middleware(['auth'])->group(function(){
     Route::get('laralux/user/cart', [FrontEndController::class, 'cart'])->name('cart');
