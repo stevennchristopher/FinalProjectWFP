@@ -23,7 +23,7 @@
                                 <div class="title">
                                     <h2>{{$product->name}}</h2>
                                     <h5>By: {{$product->hotels->name}} Hotel</h5>
-                                    <h5>Type Product: {{$product->tipeproduks->nama}}</h5>
+                                    <h5>Product Type: {{$product->tipeproduks->nama}}</h5>
                                 </div>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
@@ -41,7 +41,7 @@
                                     <br>
                                     <b>Nama: </b>{{$item->name}}
                                     <br>
-                                    <b>Keterangan: </b>{{$item->description}}
+                                    <b>Deskripsi: </b>{{$item->description}}
                                     <br>
                                     @endforeach
                                     {{-- <br> --}}

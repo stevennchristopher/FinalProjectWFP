@@ -8,7 +8,9 @@
                 @guest
                 <h2 style="font-size:30px">Pilihan Hotel: </h2>
                 @else
+                @isset($points_remaining)
                 <h2 style="font-size:20px">Available Points: {{$points_remaining}}</h2>
+                @endisset
                 <h2 style="font-size:30px">Pilihan Hotel: </h2>
                 @endguest
                 <div class="row">
@@ -35,6 +37,7 @@
                                 </div>
                             </div>
                             <div class="product-price">
+                                <h3 style="font-size:15px">Hotel Type: <span>{{$h->types->name}}</span></h3><br>
                                 <h3 style="font-size:15px">Address: <span>{{$h->address}}</span></h3><br>
                                 <h3 style="font-size:15px">Phone: <span>{{$h->phone}}</span></h3><br>
                                 <h3 style="font-size:15px">Email: <span>{{$h->email}}</span></h3><br>

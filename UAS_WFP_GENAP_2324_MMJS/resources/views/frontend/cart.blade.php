@@ -110,7 +110,7 @@
                                     <div class="cart-btn">
                                         <form id="checkoutForm" action="{{ route('checkout') }}" method="GET">
                                         <input type="hidden" name="points" id="hidden_points" value="">
-                                        <a class="btn btn-xs" href="{{ route('laralux.index') }}">Continue Shopping</a>
+                                        <a class="btn btn-xs" href="{{ route('laralux.index') }}" style="padding-top: 12px; padding-bottom: 12px">Continue Shopping</a>
                                         <button type="submit" id="checkoutbtn">Checkout</button>
                                         </form>    
                                     </div>

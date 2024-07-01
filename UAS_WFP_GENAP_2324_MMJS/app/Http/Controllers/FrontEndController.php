@@ -19,6 +19,7 @@ class FrontEndController extends Controller
 {
     public function indexSebelumLogin(){
         $hotel = Hotel::all();
+        $points_remaining = 0;
         return view('frontend.index', compact('hotel'));
     }
 
@@ -238,11 +239,17 @@ class FrontEndController extends Controller
         $membership->save();
     }
 
-    public function nota(){
-        $dataHotel = Hotel::all();
-        $types = TypeProduct::all();
+    public function transaksi()
+    {
+        $user = Auth::user();
+        $user_id = $user->id;
 
-        $queryModel=Product::all();
-        return view('frontend.nota', compact('queryModel', 'dataHotel','types'));
+        $transactions = Transaction::where('customer_id', $user_id)->get();
+        $details = [];
+        foreach ($transactions as $transaction) {
+            $details[$transaction->id] = $transaction->products;
+        }
+
+        return view('frontend.transaksi', compact('transactions', 'details'));
     }
 }
