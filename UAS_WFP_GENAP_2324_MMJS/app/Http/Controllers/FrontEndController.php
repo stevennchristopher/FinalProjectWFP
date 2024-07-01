@@ -249,7 +249,7 @@ class FrontEndController extends Controller
         $user = Auth::user();
         $user_id = $user->id;
 
-        $transactions = Transaction::where('customer_id', $user_id)->get();
+        $transactions = Transaction::where('customer_id', $user_id)->with('products')->get();
         $details = [];
         foreach ($transactions as $transaction) {
             $details[$transaction->id] = $transaction->products;

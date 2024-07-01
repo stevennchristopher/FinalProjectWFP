@@ -22,8 +22,13 @@
                                                     <h4 class="card-title"><b> Transaction #{{$data->transaction_date}}</b></h4>
                                                 </center>
                                                 <br>
-                                                @foreach ($details as $p)
-                                                
+                                                @foreach ($details[$data->id] as $p)
+                                                <p class="card-text m-3"><b>Product Name: </b>{{$p->name}}</p>
+                                                <p class="card-text m-3"><b>Product Hotel: </b>{{$p->hotels->name}}</p>
+                                                <p class="card-text m-3"><b>Product Price: </b>{{'IDR '.number_format($p->price, 0, ',')}}</p>
+                                                <p class="card-text m-3"><b>Product Type: </b>{{$p->tipeproduks->nama}}</p>
+                                                <p class="card-text m-3"><b>Quantity: </b>{{$p->pivot->quantity}}</p>
+                                                <p class="card-text m-3"><b>Subtotal: </b>{{'IDR '.number_format($p->pivot->subtotal, 0, ',')}}</p>
                                                 @endforeach
                                                 <p class="card-text m-3"><b>Transaction Date: </b>{{$data->transaction_date}}</p>
                                                 <p class="card-text m-3"><b>Total: </b>{{'IDR '.number_format($data->harga_asli, 0, ',')}}</p>
