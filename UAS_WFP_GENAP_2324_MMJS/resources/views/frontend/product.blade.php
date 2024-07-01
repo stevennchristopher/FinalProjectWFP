@@ -35,7 +35,6 @@
                                 </a>
                                 <div class="product-action">
                                     <a href="{{route('addCart',$p->id)}}"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
                                     <a href="{{route('laralux.show',$p->id)}}"><i class="fa fa-search"></i></a>
                                 </div>
                             </div>

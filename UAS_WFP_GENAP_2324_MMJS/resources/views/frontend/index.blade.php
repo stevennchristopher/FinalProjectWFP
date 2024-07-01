@@ -19,20 +19,20 @@
                     <div class="col-md-4">
                         <div class="product-item">
                             <div class="product-title">
-                                <a href="{{route('laralux.product', $h->id)}}">{{ $h->name}}</a>
+                                <a href="{{route('laralux.product', $h->id)}}">{{ $h->name}}</a><br><br>
+                                <img style="height: 100px" src="{{asset('logo/'.$h->id.'.jpg')}}"/><br><br>
                                 <div class="ratting">
-                                    <h3 style="font-size:20px; color: white;">{{$h->rating}}</h3>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+
+                                    <h3 style="font-size:20px; color: white;">{{$h->rating}}  <i class="fa fa-star"></i></h3>
                                 </div>
                             </div>
                             <div class="product-image">
                                 <a href="product-detail.html">
                                     <img style="height: 190px" src="{{asset('images/hotel/'.$h->id.'.jpg')}}" class="card-img-top"/><br>
                                 </a>
+                                <div class="product-action">
+                                    <a href="{{route('laralux.product', $h->id)}}"><i class="fa fa-search"></i></a>
+                                </div>
                             </div>
                             <div class="product-price">
                                 <h3 style="font-size:15px">Address: <span>{{$h->address}}</span></h3><br>
