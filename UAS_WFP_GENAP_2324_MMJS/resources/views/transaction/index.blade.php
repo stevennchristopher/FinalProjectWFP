@@ -38,7 +38,11 @@ Transaction
                 <th>ID</th>
                 <th>Customer</th>
                 <th>Tanggal Transaction</th>
-                <th>Action</th>
+                <th>Harga Asli</th>
+                <th>Diskon</th>
+                <th>PPN</th>
+                <th>Grand Total</th>
+                <th>Action Detail</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -48,6 +52,10 @@ Transaction
                 <td>{{ $d->id }}</td>
                 <td>{{ $d->customers->name }}</td>
                 <td>{{ $d->transaction_date }}</td>
+                <td>Rp{{ $d->harga_asli }},-</td>
+                <td>Rp{{ $d->diskon }},-</td>
+                <td>Rp{{ $d->ppn }},-</td>
+                <td>Rp{{ $d->harga_grandtotal }},-</td>
                 <td>
                     <a class="btn btn-default" data-toggle="modal" href="#myModal" onclick="getDetailData({{ $d->id}});">Lihat Rincian Pembelian</a>
 

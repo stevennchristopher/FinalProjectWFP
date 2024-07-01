@@ -25,7 +25,11 @@
                         </div>
                         <div class="col-md-7">
                             <div class="product-content">
-                                <div class="title"><h2>{{$product->name}}</h2></div>
+                                <div class="title">
+                                    <h2>{{$product->name}}</h2>
+                                    <h5>By: {{$product->hotels->name}} Hotel</h5>
+                                    <h5>Type Product: {{$product->tipeproduks->nama}}</h5>
+                                </div>
                                 <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -36,6 +40,16 @@
                                 <div class="price">
                                     <h4>Price:</h4>
                                     <p>{{ 'IDR'.$product->price }}</p>
+                                    <br><br>
+                                    <h4>Fasilitas:</h4>
+                                    @foreach ($fasilitas as $item)
+                                    <br>
+                                    <b>Nama: </b>{{$item->name}}
+                                    <br>
+                                    <b>Keterangan: </b>{{$item->description}}
+                                    <br>
+                                    @endforeach
+                                    {{-- <br> --}}
                                 </div>
                                 <div class="action">
                                     <a class="btn" href="{{route('addCart',$product->id)}}"><i class="fa fa-shopping-cart"></i>Add to Cart</a>

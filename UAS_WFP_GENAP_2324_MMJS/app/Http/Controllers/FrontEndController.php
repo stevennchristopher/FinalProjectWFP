@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\Membership;
+use App\Models\Fasilitas;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Exception;
@@ -60,6 +61,7 @@ class FrontEndController extends Controller
 
     public function show($id){
         $product = Product::find($id);
+        $fasilitas = Fasilitas::where('product_id', $id)->get();
 
         $directory = public_path('images/prod/'.$id);
         if(File::exists($directory))
@@ -72,7 +74,7 @@ class FrontEndController extends Controller
             $product['filenames']=$filenames;
         }
 
-        return view('frontend.product-detail', compact('product'));
+        return view('frontend.product-detail', compact('product','fasilitas'));
     }
 
     public function cart()
