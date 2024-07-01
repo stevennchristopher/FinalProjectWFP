@@ -110,7 +110,7 @@ Route::middleware(['auth'])->group(function(){
 
     Route::post('laralux/cart/addQty', [FrontEndController::class, 'addQuantity'])->name('addQty');
     Route::post('laralux/cart/reduceQty', [FrontEndController::class, 'reduceQuantity'])->name('redQty');
-    Route::get('laralux/cart/checkout',[FrontEndController::class,'checkout'])->name('checkout');
+    Route::post('laralux/cart/checkout',[FrontEndController::class,'checkout'])->name('checkout');
 
     Route::get('laralux/user/transaksi', [FrontEndController::class, 'transaksi'])->name('laralux.transaksi');
 });

@@ -191,6 +191,11 @@ class FrontEndController extends Controller
         $t = new Transaction();
         $t->customer_id = $customer->id;
         $t->transaction_date = Carbon::now()->toDateTimeString();
+        $diskon = isset($requestData['diskon']) ? intval($requestData['diskon']) : 0;
+        $t->harga_asli = $requestData['hargaasli'];
+        $t->diskon = $requestData['diskon'];
+        $t->ppn = $requestData['ppn'];
+        $t->harga_grandtotal = $requestData['hargaakhir'];
         $t->save();
 
         //insert into junction table product_transaction using eloquent

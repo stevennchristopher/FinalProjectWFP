@@ -84,7 +84,7 @@
                                         <div class="coupon">
                                                 <input type="number" name="point" id="points_to_redeem" placeholder="Enter points" min="0" max="{{$points_remaining}}">
 
-                                                <button type="button" onclick="calculateRedeemAmount()">Redeem Points</button>
+                                                <button type="button" id="redeemButton" onclick="calculateRedeemAmount()">Redeem Points</button>
                                         </div>
                                
                             </div>
@@ -108,8 +108,13 @@
                                 
 
                                     <div class="cart-btn">
-                                        <form id="checkoutForm" action="{{ route('checkout') }}" method="GET">
+                                        <form id="checkoutForm" action="{{ route('checkout') }}" method="POST">
+                                        @csrf
                                         <input type="hidden" name="points" id="hidden_points" value="">
+                                        <input type="hidden" name="hargaasli" id="hidden_hargaasli" value="">
+                                        <input type="hidden" name="diskon" id="hidden_diskon" value="">
+                                        <input type="hidden" name="ppn" id="hidden_ppn" value="">
+                                        <input type="hidden" name="hargaakhir" id="hidden_hargaakhir" value="">
                                         <a class="btn btn-xs" href="{{ route('laralux.index') }}" style="padding-top: 12px; padding-bottom: 12px">Continue Shopping</a>
                                         <button type="submit" id="checkoutbtn">Checkout</button>
                                         </form>    
@@ -189,12 +194,31 @@
             document.getElementById('redeem_amount').getElementsByTagName('span')[0].textContent = 'IDR ' + redeem_amount.toLocaleString();
             document.getElementById('grandtotal').getElementsByTagName('span')[0].textContent = 'IDR ' + total_after_redeem.toLocaleString();
             document.getElementById('tax').getElementsByTagName('span')[0].textContent = 'IDR ' + tax.toLocaleString();
+
+            document.getElementById('hidden_hargaasli').value = subtotal;
+            document.getElementById('hidden_diskon').value = redeem_amount;
+            document.getElementById('hidden_ppn').value = tax;
+            document.getElementById('hidden_hargaakhir').value = total_after_redeem;
         }
             document.getElementById('checkoutbtn').addEventListener('click', function(event) {
             var points_to_redeem = document.getElementById('points_to_redeem').value;
             document.getElementById('hidden_points').value = points_to_redeem;
         });
 
+         // nyalakan Redeem Points button kalau diinput (bkn 0)
+         document.getElementById('points_to_redeem').addEventListener('input', function() {
+            var points_to_redeem = document.getElementById('points_to_redeem').value;
+            var redeemButton = document.getElementById('redeemButton');
+            if (points_to_redeem == 0) {
+                redeemButton.disabled = true;
+                var redeemAmountElement = document.getElementById('redeem_amount');
+                redeemAmountElement.style.display = 'none';
+            } else {
+                redeemButton.disabled = false;
+            }
+        });
+
+        document.getElementById('redeemButton').disabled = true;
     
     </script>
 @endsection
