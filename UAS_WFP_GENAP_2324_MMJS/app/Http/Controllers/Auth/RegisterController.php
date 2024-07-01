@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 use App\Models\Customer;
+use App\Models\Membership;
 
 class RegisterController extends Controller
 {
@@ -67,6 +68,7 @@ class RegisterController extends Controller
     {
         $user = $this->createUser($data);
         $this->createCustomer($data);
+        $this->createMembership($data);
 
         return $user;
     }
@@ -85,7 +87,19 @@ class RegisterController extends Controller
     {
         return Customer::create([
             'name' => $data['name'],
-            'address'=> $data['address'],
+            'address'=> $data['address']
+        ]);
+    }
+
+    protected function createMembership(array $data)
+    {
+        $lastMembership  = Membership::latest()->first();
+        $idMembershipTerakhir = $lastMembership->id;
+        $idBaru = $idMembershipTerakhir + 1;
+
+        return Membership::create([
+            'point' => 0,
+            'customer_id' => $idBaru
         ]);
     }
 }

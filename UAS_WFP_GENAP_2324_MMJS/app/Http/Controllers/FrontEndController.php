@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\File;
 
 class FrontEndController extends Controller
 {
-    public function index(){
+    public function indexSebelumLogin(){
         $product = Product::all();
 
         foreach($product as $r)
@@ -32,6 +32,30 @@ class FrontEndController extends Controller
         }
 
         return view('frontend.index', compact('product'));
+    }
+
+    public function index(){
+        $product = Product::all();
+
+        $user = Auth::user();
+        $user_id = $user->id;
+        $points_remaining = Membership::where('customer_id', $user_id)->value('point');
+
+        foreach($product as $r)
+        {
+            $directory = public_path('images/prod/'.$r->id);
+            if(File::exists($directory))
+            {
+                $files = File::files($directory);
+                $filenames = [];
+                foreach ($files as $file) {
+                    $filenames[] = $file->getFilename();
+                }
+                $r['filenames']=$filenames;
+            }
+        }
+
+        return view('frontend.index', compact('product', 'points_remaining'));
     }
 
     public function show($id){
@@ -161,7 +185,7 @@ class FrontEndController extends Controller
         if (empty($cart)) {
             return redirect()->back()->with('error', 'Cart kosong. Tambahkan produk ke Cart terlebih dahulu untuk checkout.');
         }
-    
+
         $customer = Auth::user();
         $requestData = $request->all();
 
@@ -214,7 +238,7 @@ class FrontEndController extends Controller
     public function redeemPoints($redeemedpoints, $id)
     {
         $membership = Membership::find($id);
-        
+
         $membership->point -= $redeemedpoints;
         $membership->save();
     }

@@ -95,10 +95,9 @@ Route::post('product/simpanPhoto', [ProductController::class, 'simpanPhoto']);
 
 Route::post('product/delPhoto', [ProductController::class, 'delPhoto']);
 
-Route::get('/', [FrontEndController::class, 'index'])->name('laralux.index');
+Route::get('/', [FrontEndController::class, 'indexSebelumLogin'])->name('indexSebelumLogin');
 Route::get('/laralux', [FrontEndController::class, 'index'])->name('laralux.index');
 Route::get('/laralux/{laralux}', [FrontEndController::class, 'show'])->name('laralux.show');
-
 
 Route::middleware(['auth'])->group(function(){
     Route::get('laralux/user/cart', [FrontEndController::class, 'cart'])->name('cart');
@@ -109,7 +108,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('laralux/cart/addQty', [FrontEndController::class, 'addQuantity'])->name('addQty');
     Route::post('laralux/cart/reduceQty', [FrontEndController::class, 'reduceQuantity'])->name('redQty');
     Route::get('laralux/cart/checkout',[FrontEndController::class,'checkout'])->name('checkout');
-   
+
 });
 
 Route::get('laporan/poinmembershipterbanyak', [CustomerController::class, 'poinMembershipTerbanyak'])
@@ -119,4 +118,4 @@ Route::get('laporan/pelangganpembelianterbanyak', [CustomerController::class, 'p
 Route::get('laporan/hotelreservasiterbanyak', [CustomerController::class, 'hotelreservasiterbanyak'])
     ->name('laporanhotelreservasiterbanyak');
 Route::view('laporan', 'laporan.index')
-    ->name('indexlaporan');
+    ->name('indexlaporan')->middleware(['auth', 'role:owner,employee']);
