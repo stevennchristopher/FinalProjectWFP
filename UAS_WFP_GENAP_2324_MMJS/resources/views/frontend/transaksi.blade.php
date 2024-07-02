@@ -18,7 +18,10 @@
                                     <div class="col-12 mb-4" style="margin-bottom: 50px">
                                         <div class="card mx-auto" style="max-width: 80rem;">
                                             <div id="tr_{{$data->id}}" class="card-body">
-                                                <h4 class="card-title"><b> Transaction #{{$data->transaction_date}}</b></h4>
+                                                <h3 class="card-title" style="border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px;"><b> TRANSACTION #{{$data->transaction_date}}</b></h3>
+                                                @foreach ($details[$data->id] as $p)
+                                                <h2 style="font-size: 25px">{{$p->hotels->name}} <small>({{$p->hotels->types->name}})</small></h2>
+                                                
                                                 <table class="table">
                                                     <thead>
                                                         <tr>
@@ -28,22 +31,33 @@
                                                             <th>Price</th>
                                                             <th>Subtotal</th>
                                                         </tr>
+                                                        <tr>
+                                                            <td>{{$p->name}}</td>
+                                                            <td>{{$p->tipeproduks->nama}}</td>
+                                                            <td>{{$p->pivot->quantity}}</td>
+                                                            <td>{{'IDR '.number_format($p->price, 0, ',')}}</td>
+                                                            <td>{{'IDR '.number_format($p->pivot->subtotal, 0, ',')}}</td>
+                                                        </tr>
                                                     </thead>
                                                 </table>
-                                                
-                                                @foreach ($details[$data->id] as $p)
-                                                <p class="card-text m-3"><b>Product Name: </b>{{$p->name}}</p>
-                                                <p class="card-text m-3"><b>Product Hotel: </b>{{$p->hotels->name}}</p>
-                                                <p class="card-text m-3"><b>Product Price: </b>{{'IDR '.number_format($p->price, 0, ',')}}</p>
-                                                <p class="card-text m-3"><b>Product Type: </b>{{$p->tipeproduks->nama}}</p>
-                                                <p class="card-text m-3"><b>Quantity: </b>{{$p->pivot->quantity}}</p>
-                                                <p class="card-text m-3"><b>Subtotal: </b>{{'IDR '.number_format($p->pivot->subtotal, 0, ',')}}</p>
                                                 @endforeach
-                                                <p class="card-text m-3"><b>Transaction Date: </b>{{$data->transaction_date}}</p>
-                                                <p class="card-text m-3"><b>Total: </b>{{'IDR '.number_format($data->harga_asli, 0, ',')}}</p>
-                                                <p class="card-text m-3"><b>Discount: </b>{{'-IDR '.number_format($data->diskon, 0, ',')}}</p>
-                                                <p class="card-text m-3"><b>Tax (11%): </b>{{'IDR '.number_format($data->ppn, 0, ',')}}</p>
-                                                <h5 class="card-text m-3"><b>Grand Total: {{'IDR '.number_format($data->harga_grandtotal, 0, ',')}}</b></h5>
+                                                <center><h3 style="border-top: 2px solid #000; padding-top: 10px; margin-top: 20px;"><b>PAYMENT DETAIL</b></h3></center>
+                                                <p class="card-text m-3 d-flex justify-content-between">
+                                                    <span><b>Total</b></span>
+                                                    <span>{{'IDR '.number_format($data->harga_asli, 0, ',')}}</span>
+                                                </p>
+                                                <p class="card-text m-3 d-flex justify-content-between">
+                                                    <span><b>Tax (11%)</b></span>
+                                                    <span>{{'IDR '.number_format($data->ppn, 0, ',')}}</span>
+                                                </p>
+                                                <p class="card-text m-3 d-flex justify-content-between" style="color: #39ff14">
+                                                    <span><b>Discount </b></span>
+                                                    <span>{{'-IDR '.number_format($data->diskon, 0, ',')}}</span>
+                                                </p>
+                                                <h2 class="card-text m-3 d-flex justify-content-between">
+                                                   <span><b>Grand Total</b></span>
+                                                    <span><b>{{'IDR '.number_format($data->harga_grandtotal, 0, ',')}}</b></span>
+                                                </h2>
                                             </div>
                                         </div>
                                     </div>
