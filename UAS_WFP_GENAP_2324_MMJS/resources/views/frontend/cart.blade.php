@@ -161,12 +161,13 @@
         });
     }
 
+    document.getElementById('checkoutbtn').addEventListener('click', function() {
+        calculateRedeemAmount();
+    });
 
     function calculateRedeemAmount() {
-            var points_to_redeem = document.getElementById('points_to_redeem').value;
+            var points_to_redeem = document.getElementById('points_to_redeem').value || 0;
             var subtotal = {{$subtotal}};
-            var points_remaining = {{$points_remaining}};
-
             var points_remaining = {{$points_remaining}};
 
             if (subtotal < 100000) {
@@ -201,7 +202,7 @@
             document.getElementById('hidden_hargaakhir').value = total_after_redeem;
         }
             document.getElementById('checkoutbtn').addEventListener('click', function(event) {
-            var points_to_redeem = document.getElementById('points_to_redeem').value;
+            var points_to_redeem = document.getElementById('points_to_redeem').value || 0;
             document.getElementById('hidden_points').value = points_to_redeem;
         });
 
