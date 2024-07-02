@@ -25,7 +25,7 @@
             @endforeach
         </select><br>
         <small class="form-text text-muted">Please choose the customer of the transaction here.</small>
-
+        
         <br><br>
 
         <div id="productContainer">
@@ -50,6 +50,27 @@
             </div>
             -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         </div>
+
+        <div class="form-group">
+                <label for="price">Real Price</label>
+                <input type="number" name="harga_asli" class="form-control" placeholder="Enter real price">
+                <small class="form-text text-muted">Please fill the real price here.</small>
+            </div>
+            <div class="form-group">
+                <label for="price">Diskon</label>
+                <input type="number" name="diskon" class="form-control" placeholder="Enter diskon">
+                <small class="form-text text-muted">Please fill the diskon here.</small>
+            </div>
+            <div class="form-group">
+                <label for="price">Ppn</label>
+                <input type="number" name="ppn" class="form-control" placeholder="Enter ppn">
+                <small class="form-text text-muted">Please fill the ppn here.</small>
+            </div>
+            <div class="form-group">
+                <label for="price">Grand Total Price</label>
+                <input type="number" name="harga_grandtotal" class="form-control" placeholder="Enter grand total price">
+                <small class="form-text text-muted">Please fill the grand total price here.</small>
+            </div>
     </div>
     <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
     <button type="submit" class="btn btn-primary">Submit</button>

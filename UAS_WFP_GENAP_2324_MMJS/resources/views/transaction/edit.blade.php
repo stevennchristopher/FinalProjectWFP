@@ -35,7 +35,24 @@
 
         <label>Date of Transaction</label><br>
         <input type="datetime-local" name="transaction_date" class="form-control" placeholder="Enter date" value="{{$data->transaction_date}}">
-        <small class="form-text text-muted">Please choose the new date of the transaction here.</small>
+        <small class="form-text text-muted">Please choose the new date of the transaction here.</small><br><br>
+
+        <label>Harga Asli</label><br>
+        <input type="text" name="harga_asli" class="form-control" value="{{$data->harga_asli}}">
+        <small class="form-text text-muted">Please write down the new price here.</small><br><br>
+
+        <label>Diskon</label><br>
+        <input type="text" name="diskon" class="form-control" value="{{$data->diskon}}">
+        <small class="form-text text-muted">Please write down the new diskon here.</small><br><br>
+
+        <label>PPN</label><br>
+        <input type="text" name="ppn" class="form-control" value="{{$data->ppn}}">
+        <small class="form-text text-muted">Please write down the new ppn here.</small><br><br>
+
+        <label>Harga Grand Total</label><br>
+        <input type="text" name="harga_grandtotal" class="form-control" value="{{$data->harga_grandtotal}}">
+        <small class="form-text text-muted">Please write down the new grand total here.</small>
+
     </div>
     <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
     <button type="submit" class="btn btn-primary">Update</button>

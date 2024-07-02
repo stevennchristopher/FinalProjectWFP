@@ -49,6 +49,10 @@ class TransactionController extends Controller
         $data = new Transaction();
         $data->customer_id = $custTransaksi;
         $data->transaction_date = now();
+        $data->harga_asli = $request->harga_asli;
+        $data->diskon = $request->diskon;
+        $data->ppn = $request->ppn;
+        $data->harga_grandtotal = $request->harga_grandtotal;
         $data->save();
 
         $dataproducts = [];
@@ -94,6 +98,10 @@ class TransactionController extends Controller
         $updatedData = $transaction;
         $updatedData->customer_id = $request->transaction_customer;
         $updatedData->transaction_date = $request->transaction_date;
+        $updatedData->transaction_date = $request->harga_asli;
+        $updatedData->transaction_date = $request->diskon;
+        $updatedData->transaction_date = $request->ppn;
+        $updatedData->transaction_date = $request->harga_grandtotal;
         $updatedData->update();
 
         return redirect()->route('transaction.index')->with('status','Horray ! Your data is successfully updated !');
