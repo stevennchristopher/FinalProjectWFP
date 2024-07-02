@@ -15,13 +15,22 @@
                                     </div>
                                 @else
                                     @foreach ($transactions as $data)
-                                    <div class="col" style="margin-bottom: 50px">
-                                        <div class="card mx-auto" style="width: 20rem">
+                                    <div class="col-12 mb-4" style="margin-bottom: 50px">
+                                        <div class="card mx-auto" style="max-width: 80rem;">
                                             <div id="tr_{{$data->id}}" class="card-body">
-                                                <center>
-                                                    <h4 class="card-title"><b> Transaction #{{$data->transaction_date}}</b></h4>
-                                                </center>
-                                                <br>
+                                                <h4 class="card-title"><b> Transaction #{{$data->transaction_date}}</b></h4>
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Product</th>
+                                                            <th>Type</th>
+                                                            <th>Quantity</th>
+                                                            <th>Price</th>
+                                                            <th>Subtotal</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                                
                                                 @foreach ($details[$data->id] as $p)
                                                 <p class="card-text m-3"><b>Product Name: </b>{{$p->name}}</p>
                                                 <p class="card-text m-3"><b>Product Hotel: </b>{{$p->hotels->name}}</p>
