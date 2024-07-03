@@ -142,7 +142,7 @@ class CustomerController extends Controller
         ->join('product_transaction', 'products.id', '=', 'product_transaction.product_id')
         ->groupBy('hotels.id', 'hotels.name')
         ->orderByDesc(DB::raw('SUM(product_transaction.quantity)'))
-        ->limit(1)
+        ->limit(3)
         ->get();
 
     //dd($data);
