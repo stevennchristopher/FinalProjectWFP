@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
+use App\Models\Hotel;
 use Illuminate\Support\Facades\File;
 
 class HomeController extends Controller
@@ -26,11 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
+        $hotel = Hotel::all();
 
-        foreach($product as $r)
+        foreach($hotel as $r)
         {
-            $directory = public_path('images/prod/'.$r->id);
+            $directory = public_path('images/hotel/'.$r->id);
             if(File::exists($directory))
             {
                 $files = File::files($directory);
@@ -42,6 +43,6 @@ class HomeController extends Controller
             }
         }
 
-        return view('frontend.index', compact('product'));
+        return view('frontend.index', compact('hotel'));
     }
 }
