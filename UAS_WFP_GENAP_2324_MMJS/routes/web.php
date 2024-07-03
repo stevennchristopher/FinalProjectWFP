@@ -83,8 +83,6 @@ Route::post('customtransaction/deleteData',[TransactionController::class,'delete
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('hotel/uploadLogo/{hotel_id}', [HotelController::class, 'uploadLogo']);
 Route::get('hotel/uploadPhoto/{hotel_id}', [HotelController::class, 'uploadPhoto']);
 Route::get('product/uploadPhoto/{product_id}', [ProductController::class, 'uploadPhoto']);
