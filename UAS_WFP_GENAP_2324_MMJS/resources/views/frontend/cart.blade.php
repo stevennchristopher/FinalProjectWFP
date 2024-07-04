@@ -42,7 +42,7 @@
                                                         @else
                                                             <img src="{{asset('images/blank.jpg')}}">
                                                         @endif
-                                                        <p>{{ $item['name'] }}</p>
+                                                        <p>{{ $item['name'] }} by {{$item['hotel']}}</p>
                                                     </div>
                                                 </td>
                                                 <td>{{ 'IDR ' . $item['price'] }}</td>

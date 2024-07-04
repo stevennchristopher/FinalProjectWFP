@@ -25,13 +25,13 @@
                                     <h5>By: {{$product->hotels->name}} Hotel</h5>
                                     <h5>Product Type: {{$product->tipeproduks->nama}}</h5>
                                 </div>
-                                <div class="ratting">
+                                <!-- <div class="ratting">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
-                                </div>
+                                </div> -->
                                 <div class="price">
                                     <h4>Price:</h4>
                                     <p>{{ 'IDR'.$product->price }}</p>

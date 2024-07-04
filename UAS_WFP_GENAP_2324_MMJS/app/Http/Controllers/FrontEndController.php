@@ -104,6 +104,7 @@ class FrontEndController extends Controller
             'quantity' => 1,
             'price' => $product->price,
             'photo[]' => $filenames,
+            'hotel' => $product->hotels->name
             ];
         }
         else{
